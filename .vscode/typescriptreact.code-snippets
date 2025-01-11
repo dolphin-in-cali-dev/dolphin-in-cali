@@ -1,6 +1,6 @@
 {
   "React Function Component": {
-    "prefix": "rfc",
+    "prefix": "rc",
     "description": "React Function Component",
     "body": [
       "export const ${1:$TM_FILENAME_BASE} = () => {",
@@ -10,7 +10,7 @@
     ]
   },
   "React Function Component Default Export": {
-    "prefix": "rfcd",
+    "prefix": "rcd",
     "description": "React Function Component",
     "body": [
       "const ${1:$TM_FILENAME_BASE} = () => {",
@@ -22,7 +22,7 @@
     ]
   },
   "React Function Component with Props": {
-    "prefix": "rfcp",
+    "prefix": "rcp",
     "description": "React Function Component with Props",
     "body": [
       "type ${1:$TM_FILENAME_BASE}Props = {}",
@@ -34,7 +34,7 @@
     ]
   },
   "React Function Component Default Export with Props": {
-    "prefix": "rfcdp",
+    "prefix": "rcdp",
     "description": "React Function Component with Props",
     "body": [
       "type ${1:$TM_FILENAME_BASE}Props = {}",
@@ -44,6 +44,15 @@
       "};",
       "",
       "export default ${1:$TM_FILENAME_BASE};",
+      ""
+    ]
+  },
+
+  "React Component Props": {
+    "prefix": "rp",
+    "description": "React Component Props",
+    "body": [
+      "type ${1:$TM_FILENAME_BASE}Props = {}",
       ""
     ]
   }
