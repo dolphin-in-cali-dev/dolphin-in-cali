@@ -1,0 +1,50 @@
+{
+  "React Function Component": {
+    "prefix": "rfc",
+    "description": "React Function Component",
+    "body": [
+      "export const ${1:$TM_FILENAME_BASE} = () => {",
+      "  return <></>;",
+      "};",
+      ""
+    ]
+  },
+  "React Function Component Default Export": {
+    "prefix": "rfcd",
+    "description": "React Function Component",
+    "body": [
+      "const ${1:$TM_FILENAME_BASE} = () => {",
+      "  return <></>;",
+      "};",
+      "",
+      "export default ${1:$TM_FILENAME_BASE};",
+      ""
+    ]
+  },
+  "React Function Component with Props": {
+    "prefix": "rfcp",
+    "description": "React Function Component with Props",
+    "body": [
+      "type ${1:$TM_FILENAME_BASE}Props = {}",
+      "",
+      "export const ${1:$TM_FILENAME_BASE} = ({}: ${1:$TM_FILENAME_BASE}Props) => {",
+      "  return <></>;",
+      "};",
+      ""
+    ]
+  },
+  "React Function Component Default Export with Props": {
+    "prefix": "rfcdp",
+    "description": "React Function Component with Props",
+    "body": [
+      "type ${1:$TM_FILENAME_BASE}Props = {}",
+      "",
+      "const ${1:$TM_FILENAME_BASE} = ({}: ${1:$TM_FILENAME_BASE}Props) => {",
+      "  return <></>;",
+      "};",
+      "",
+      "export default ${1:$TM_FILENAME_BASE};",
+      ""
+    ]
+  }
+}
