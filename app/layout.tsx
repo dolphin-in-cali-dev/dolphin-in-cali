@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={cn(
           `${plusJakartaSans.variable} ${roboto.variable} ${anonymousPro.variable} font-sans antialiased`,
-          'mx-auto max-w-[1400px]',
+          'mx-auto max-w-[1440px] px-10',
         )}
       >
         <GlobalTabs />
