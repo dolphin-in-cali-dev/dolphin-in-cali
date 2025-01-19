@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 import tailwindCssAnimate from 'tailwindcss-animate';
 
 export default {
@@ -10,6 +11,13 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-plus-jakarta)', ...fontFamily.sans],
+        'plus-jakarta-sans': ['var(--font-plus-jakarta)', ...fontFamily.sans],
+        clash: ['ClashDisplay', 'sans-serif'],
+        roboto: ['var(--font-roboto)', ...fontFamily.sans],
+        'anonymous-pro': ['var(--font-anonymous-pro)', ...fontFamily.mono],
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

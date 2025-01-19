@@ -1,20 +1,27 @@
 import './globals.css';
 
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Anonymous_Pro, Plus_Jakarta_Sans, Roboto } from 'next/font/google';
 
 import { cn } from '@/lib/utils';
 
 import GlobalTabs from './components/GlobalTabs';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: '--font-plus-jakarta',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const roboto = Roboto({
+  variable: '--font-roboto',
   subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '700', '900'],
+});
+
+const anonymousPro = Anonymous_Pro({
+  variable: '--font-anonymous-pro',
+  subsets: ['latin'],
+  weight: ['400', '700'],
 });
 
 export const metadata: Metadata = {
@@ -31,7 +38,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          `${geistSans.variable} ${geistMono.variable} antialiased`,
+          `${plusJakartaSans.variable} ${roboto.variable} ${anonymousPro.variable} font-sans antialiased`,
           'mx-auto max-w-[1400px]',
         )}
       >
