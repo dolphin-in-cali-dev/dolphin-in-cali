@@ -79,6 +79,17 @@ body {
   font-display: swap;
 }
 
+::-moz-selection {
+  /* Code for Firefox */
+  color: black;
+  background: #fffd8c;
+}
+
+::selection {
+  color: black;
+  background: #fffd8c;
+}
+
 @layer utilities {
   .clip-wave {
     clip-path: path(
