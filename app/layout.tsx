@@ -3,8 +3,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Anonymous_Pro, Plus_Jakarta_Sans, Roboto } from 'next/font/google';
 
-import { cn } from '@/lib/utils';
-
 import GlobalTabs from './components/GlobalTabs';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -37,10 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(
-          `${plusJakartaSans.variable} ${roboto.variable} ${anonymousPro.variable} font-sans antialiased`,
-          'mx-auto max-w-[1440px] px-10',
-        )}
+        className={`${plusJakartaSans.variable} ${roboto.variable} ${anonymousPro.variable} font-sans antialiased`}
       >
         <GlobalTabs />
         {children}
