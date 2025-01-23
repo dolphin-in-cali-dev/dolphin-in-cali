@@ -4,7 +4,7 @@ import TitleImage from './TitleImage';
 
 const TitleSection = () => {
   return (
-    <div className="flex flex-col gap-y-48 pb-6">
+    <div className="mx-auto flex max-w-[1440px] flex-col gap-y-48 px-10 pb-6">
       <div className="flex flex-col gap-y-6">
         <TitleImage />
         <ScrollDownInstruction />
