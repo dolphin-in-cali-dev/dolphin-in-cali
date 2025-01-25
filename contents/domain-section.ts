@@ -1,4 +1,10 @@
-export const domainCards = [
+export type DomainCardInfo = {
+  title: string;
+  thumbnail: string;
+  description: string;
+};
+
+export const domainCards: DomainCardInfo[] = [
   {
     title: 'Web Design &\nDevelopment',
     thumbnail: 'https://picsum.photos/201',

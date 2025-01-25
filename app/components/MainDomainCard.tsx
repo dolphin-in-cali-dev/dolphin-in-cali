@@ -1,13 +1,10 @@
 import Image from 'next/image';
 
 import { Separator } from '@/components/ui/separator';
+import type { DomainCardInfo } from '@/contents/domain-section';
 
 type MainDomainCardProps = {
-  content: {
-    title: string;
-    thumbnail: string;
-    description: string;
-  };
+  content: DomainCardInfo;
 };
 
 const MainDomainCard = ({ content }: MainDomainCardProps) => {
