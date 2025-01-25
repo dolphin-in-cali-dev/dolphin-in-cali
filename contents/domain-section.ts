@@ -1,4 +1,4 @@
-export const domainContent = [
+export const domainCards = [
   {
     title: 'Web Design &\nDevelopment',
     thumbnail: 'https://picsum.photos/201',

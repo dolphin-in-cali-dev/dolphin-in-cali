@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { domainContent } from '@/contents/domain-carousel';
+import { domainCards } from '@/contents/domain-section';
 
 import CarouselIndicator from './CarouselIndicator';
 import DomainCard from './DomainCard';
@@ -34,8 +34,8 @@ const DomainCarousel = () => {
     });
   }, [api]);
 
-  const first = domainContent[0];
-  const rest = domainContent.slice(1);
+  const first = domainCards[0];
+  const rest = domainCards.slice(1);
 
   return (
     <Carousel className="flex flex-col gap-y-4" setApi={setApi}>
