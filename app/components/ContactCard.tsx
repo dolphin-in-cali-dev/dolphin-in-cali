@@ -1,4 +1,4 @@
-import ShaderTest from './ShaderTest';
+import WavyAnimationCanvas from './WavyAnimationCanvas';
 
 const ContactCard = () => {
   return (
@@ -11,7 +11,7 @@ const ContactCard = () => {
           Tell us about your great idea
         </span>
       </div>
-      <ShaderTest />
+      <WavyAnimationCanvas />
     </div>
   );
 };

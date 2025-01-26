@@ -10,7 +10,7 @@ type ShaderTestProps = {
   className?: string;
 };
 
-const WebGLCanvas = ({ className }: ShaderTestProps) => {
+const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -118,4 +118,4 @@ const WebGLCanvas = ({ className }: ShaderTestProps) => {
   return <canvas ref={canvasRef} className={cn(className)} />;
 };
 
-export default WebGLCanvas;
+export default WavyAnimationCanvas;
