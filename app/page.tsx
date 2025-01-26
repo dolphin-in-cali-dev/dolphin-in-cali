@@ -1,3 +1,4 @@
+import CaseStudySection from './components/CaseStudySection';
 import CatchPhraseSection from './components/CatchPhraseSection';
 import DomainSection from './components/DomainSection';
 import Footer from './components/Footer';
@@ -10,6 +11,7 @@ export default function Home() {
         <TitleSection />
         <DomainSection />
         <CatchPhraseSection />
+        <CaseStudySection />
       </main>
       <Footer />
     </div>
