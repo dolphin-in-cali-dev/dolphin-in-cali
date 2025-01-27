@@ -3,7 +3,8 @@ precision highp float;
 
 uniform vec3 iResolution;
 uniform float iTime;
-uniform vec4 iMouse;
+uniform vec2 iMouse;
+uniform float u_mass;
 out vec4 fragColor;
 
 /*--- BEGIN OF SHADERTOY ---*/
@@ -11,11 +12,11 @@ out vec4 fragColor;
 vec4 colormap(float x) {
     float intensity = x;
 
-    float red = 0.1 * intensity;
-    float green = 0.4 * intensity;
-    float blue = 0.8 * intensity;
+    float red = 0.1f * intensity;
+    float green = 0.4f * intensity;
+    float blue = 0.8f * intensity;
 
-    return vec4(red, green, blue, 1.0);
+    return vec4(red, green, blue, 1.0f);
 
 }
 
@@ -31,47 +32,82 @@ vec4 colormap(float x) {
     return mix(mix( a, b,f.x), mix( c, d,f.x),f.y);
 }*/
 
-
-float rand(vec2 n) { 
-    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+float rand(vec2 n) {
+    return fract(sin(dot(n, vec2(12.9898f, 4.1414f))) * 43758.5453f);
 }
 
-float noise(vec2 p){
+float noise(vec2 p) {
     vec2 ip = floor(p);
     vec2 u = fract(p);
-    u = u*u*(3.0-2.0*u);
+    u = u * u * (3.0f - 2.0f * u);
 
-    float res = mix(
-        mix(rand(ip),rand(ip+vec2(1.0,0.0)),u.x),
-        mix(rand(ip+vec2(0.0,1.0)),rand(ip+vec2(1.0,1.0)),u.x),u.y);
-    return res*res;
+    float res = mix(mix(rand(ip), rand(ip + vec2(1.0f, 0.0f)), u.x), mix(rand(ip + vec2(0.0f, 1.0f)), rand(ip + vec2(1.0f, 1.0f)), u.x), u.y);
+    return res * res;
 }
 
-const mat2 mtx = mat2( 0.80,  0.60, -0.60,  0.80 );
+const mat2 mtx = mat2(0.80f, 0.60f, -0.60f, 0.80f);
 
-float fbm( vec2 p ) {
-    float f = 0.0;
+float fbm(vec2 p) {
+    float f = 0.0f;
 
-    f += 0.500000*noise( p + iTime  ); p = mtx*p*2.02;
-    f += 0.031250*noise( p ); p = mtx*p*2.01;
-    f += 0.250000*noise( p ); p = mtx*p*2.03;
-    f += 0.125000*noise( p ); p = mtx*p*2.01;
-    f += 0.062500*noise( p ); p = mtx*p*2.04;
-    f += 0.015625*noise( p + sin(iTime) );
+    f += 0.500000f * noise(p + iTime);
+    p = mtx * p * 2.02f;
+    f += 0.031250f * noise(p);
+    p = mtx * p * 2.01f;
+    f += 0.250000f * noise(p);
+    p = mtx * p * 2.03f;
+    f += 0.125000f * noise(p);
+    p = mtx * p * 2.01f;
+    f += 0.062500f * noise(p);
+    p = mtx * p * 2.04f;
+    f += 0.015625f * noise(p + sin(iTime));
 
-    return f/0.96875;
+    return f / 0.96875f;
 }
 
-float pattern( in vec2 p ) {
-	return fbm( p + fbm( p + fbm( p ) ) );
+float pattern(in vec2 p) {
+    return fbm(p + fbm(p + fbm(p)));
 }
 
-void mainImage( out vec4 fragColor, in vec2 fragCoord ) {
-    vec2 uv = fragCoord/iResolution.x;
-	float shade = pattern(uv);
-    fragColor = vec4(colormap(shade).rgb, shade);
+vec2 rotate(vec2 mt, vec2 st, float angle) {
+    float cos = cos(angle * 3.14159265359f);
+    float sin = sin(angle * 0.0f);
+    float nx = (cos * (st.x - mt.x)) + (sin * (st.y - mt.y)) + mt.x;
+    float ny = (cos * (st.y - mt.y)) - (sin * (st.x - mt.x)) + mt.y;
+    return vec2(nx, ny);
 }
- 
+
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+    vec2 uv = fragCoord / iResolution.xy;
+    vec2 mt = iMouse / iResolution.xy;
+
+    // Adjust for aspect ratio
+    float aspect = iResolution.x / iResolution.y;
+    uv.x *= aspect;
+    mt.x *= aspect;
+
+    float dx = uv.x - mt.x;
+    float dy = uv.y - mt.y;
+    float dist = sqrt(dx * dx + dy * dy);
+    float pull = u_mass / (dist * dist);
+    vec2 r = rotate(mt, uv, pull);
+    float shade = pattern(r);
+    vec3 color = colormap(shade).rgb;
+
+    float innerRadius = 0.14f;
+    float outerRadius = 0.15f;
+
+    if(dist < innerRadius) {
+        color = vec3(0.0f);
+        fragColor = vec4(color, 1.0f);
+    } else if(dist < outerRadius) {
+        float alpha = 1.0f - smoothstep(innerRadius, outerRadius, dist);
+        fragColor = vec4(color, mix(alpha, shade, (dist - innerRadius) / (outerRadius - innerRadius)));
+    } else {
+        fragColor = vec4(color, shade);
+    }
+}
+
 /*--- END OF SHADERTOY ---*/
 
 void main() {
