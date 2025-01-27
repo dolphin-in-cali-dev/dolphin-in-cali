@@ -1,5 +1,6 @@
 import './globals.css';
 
+import { ReactLenis } from 'lenis/react';
 import type { Metadata } from 'next';
 import { Anonymous_Pro, Plus_Jakarta_Sans, Roboto } from 'next/font/google';
 
@@ -37,8 +38,10 @@ export default function RootLayout({
       <body
         className={`${plusJakartaSans.variable} ${roboto.variable} ${anonymousPro.variable} font-sans antialiased`}
       >
-        <GlobalTabs />
-        {children}
+        <ReactLenis root>
+          <GlobalTabs />
+          {children}
+        </ReactLenis>
       </body>
     </html>
   );
