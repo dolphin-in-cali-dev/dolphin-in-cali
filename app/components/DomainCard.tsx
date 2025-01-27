@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { Separator } from '@/components/ui/separator';
-import type { DomainCardInfo } from '@/contents/domain-section';
+import type { DomainCardInfo } from '@/constants/domain-section';
 import { cn } from '@/lib/utils';
 
 type DomainCardProps = {

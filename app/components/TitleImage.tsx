@@ -3,6 +3,8 @@ import BackgroundImage from '@assets/images/main-placeholder.png';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 
+import { CS_EMAIL } from '@/constants/basic';
+
 const TitleImage = () => {
   return (
     <div className="relative max-h-[600px] overflow-hidden rounded-t-3xl rounded-br-3xl">
@@ -27,7 +29,7 @@ const TitleImage = () => {
       </div>
 
       <a
-        href="mailto:dolpninincali.dev@gmail.com"
+        href={`mailto:${CS_EMAIL}`}
         className="clip-connect-button absolute bottom-2.5 left-[732px] flex items-center gap-x-3 rounded-r-full bg-[radial-gradient(circle_at_194px,transparent_21px,rgba(5,57,203,0.6)_22px)] p-1.5 pl-14"
       >
         <span className="text-base font-medium text-white">CONNECT US</span>

@@ -2,7 +2,7 @@ import dummyImage1 from '@assets/images/dummy-portfolio-1.png';
 import dummyImage2 from '@assets/images/dummy-portfolio-2.png';
 import Image from 'next/image';
 
-import { caseStudyCards } from '@/contents/case-studies-section';
+import { caseStudyCards } from '@/constants/case-studies-section';
 
 import CaseStudyCard from './CaseStudyCard';
 

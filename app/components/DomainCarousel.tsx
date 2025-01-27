@@ -10,7 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { domainCards } from '@/contents/domain-section';
+import { domainCards } from '@/constants/domain-section';
 
 import CarouselIndicator from './CarouselIndicator';
 import DomainCard from './DomainCard';

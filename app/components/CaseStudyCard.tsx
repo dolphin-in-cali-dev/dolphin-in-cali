@@ -2,7 +2,7 @@ import { AsteriskIcon } from 'lucide-react';
 import Image from 'next/image';
 import { Fragment } from 'react';
 
-import type { CaseStudyInfo } from '@/contents/case-studies-section';
+import type { CaseStudyInfo } from '@/constants/case-studies-section';
 
 type CaseStudyCardProps = {
   content: CaseStudyInfo;
