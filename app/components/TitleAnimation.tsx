@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { CS_EMAIL } from '@/constants/basic';
 
-const TitleImage = () => {
+const TitleAnimation = () => {
   return (
     <div className="relative max-h-[600px] overflow-hidden rounded-t-3xl rounded-br-3xl">
       <span className="absolute left-10 top-6 font-roboto text-xl font-medium text-white">
@@ -43,4 +43,4 @@ const TitleImage = () => {
   );
 };
 
-export default TitleImage;
+export default TitleAnimation;
