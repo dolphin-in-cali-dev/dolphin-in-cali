@@ -1,9 +1,10 @@
 import logo from '@assets/images/logo.svg';
-import BackgroundImage from '@assets/images/main-placeholder.png';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 
 import { CS_EMAIL } from '@/constants/basic';
+
+import TitleGradient from './TitleGradient';
 
 const TitleAnimation = () => {
   return (
@@ -38,7 +39,7 @@ const TitleAnimation = () => {
         </div>
       </a>
 
-      <Image src={BackgroundImage} alt="Background Image" />
+      <TitleGradient />
     </div>
   );
 };
