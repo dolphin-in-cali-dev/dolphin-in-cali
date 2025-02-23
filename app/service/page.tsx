@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const ServicePage = () => {
   return (
-    <main className="mx-auto flex w-full max-w-[1100px] flex-col px-10 pb-20 pt-10">
+    <main className="mx-auto flex w-full max-w-[1440px] flex-col px-10 pb-20 pt-10">
       <Image src={image1} alt="Service Process 1" priority />
       <Image src={image2} alt="Service Process 2" />
       <Image src={image3} alt="Service Process 3" />

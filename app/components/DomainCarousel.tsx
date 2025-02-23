@@ -48,7 +48,7 @@ const DomainCarousel = () => {
           <Link
             className={cn(
               buttonVariants({ variant: 'outline' }),
-              'w-fit items-center rounded-full border-black bg-transparent py-5 text-lg transition-colors duration-300 hover:bg-white',
+              'w-fit items-center rounded-full border-black bg-transparent text-lg transition-colors duration-300 hover:bg-white',
             )}
             href="service"
           >
