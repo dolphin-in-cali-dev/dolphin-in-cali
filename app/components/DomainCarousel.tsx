@@ -1,7 +1,10 @@
 'use client';
 
+import { ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import { buttonVariants } from '@/components/ui/button';
 import {
   Carousel,
   type CarouselApi,
@@ -11,6 +14,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { domainCards } from '@/constants/domain-section';
+import { cn } from '@/lib/utils';
 
 import CarouselIndicator from './CarouselIndicator';
 import DomainCard from './DomainCard';
@@ -40,6 +44,18 @@ const DomainCarousel = () => {
   return (
     <Carousel className="flex flex-col gap-y-4" setApi={setApi}>
       <CarouselContent>
+        <CarouselItem className="flex basis-1/5 flex-col">
+          <Link
+            className={cn(
+              buttonVariants({ variant: 'outline' }),
+              'w-fit items-center rounded-full border-black bg-transparent text-lg transition-colors duration-300 hover:bg-white',
+            )}
+            href="service"
+          >
+            Discover Our Service
+            <ArrowUpRight />
+          </Link>
+        </CarouselItem>
         <CarouselItem className="basis-1/3">
           <MainDomainCard content={first} />
         </CarouselItem>
