@@ -557,21 +557,19 @@ class Gradient {
       }),
       e(this, 'animate', (e) => {
         if (!this.shouldSkipFrame(e) || this.isMouseDown) {
-          if (
-            ((this.t += Math.min(e - this.last, 1e3 / 15)),
-            (this.last = e),
-            this.isMouseDown)
-          ) {
+          this.t += Math.min((e - this.last) * 3, 1e3 / 24);
+          this.last = e;
+          if (this.isMouseDown) {
             let e = 160;
-            this.isMetaKey && (e = -160), (this.t += e);
+            this.isMetaKey && (e = -160);
+            this.t += e;
           }
-          (this.mesh.material.uniforms.u_time.value = this.t),
-            this.minigl.render();
+          this.mesh.material.uniforms.u_time.value = this.t;
+          this.minigl.render();
         }
-        if (0 !== this.last && this.isStatic)
-          return this.minigl.render(), void this.disconnect();
-        /*this.isIntersecting && */ (this.conf.playing || this.isMouseDown) &&
+        if (this.conf.playing || this.isMouseDown) {
           requestAnimationFrame(this.animate);
+        }
       }),
       e(this, 'addIsLoadedClass', () => {
         /*this.isIntersecting && */ !this.isLoadedClass &&
