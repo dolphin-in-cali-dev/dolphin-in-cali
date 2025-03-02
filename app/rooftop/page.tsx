@@ -1,5 +1,9 @@
-import { CS_EMAIL } from '@/constants/basic';
+import { FC } from 'react';
 import Image from 'next/image';
+import { CS_EMAIL } from '@/constants/basic';
+import type { ClassValue } from 'clsx';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 const RoofTopPage = () => {
 
