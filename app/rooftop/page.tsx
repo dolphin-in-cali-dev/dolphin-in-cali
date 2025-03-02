@@ -1,9 +1,5 @@
-import { FC } from 'react';
 import Image from 'next/image';
 import { CS_EMAIL } from '@/constants/basic';
-import type { ClassValue } from 'clsx';
-import { clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 
 const RoofTopPage = () => {
 
@@ -258,7 +254,7 @@ const RoofTopPage = () => {
       </h1>
       <div className='mx-auto mt-48 flex flex-col max-w-[1400px] items-center mb-40'>
         <h1 className='lg:mt-7 text-center text-2xl lg:text-3xl text-white'>
-          더욱 더 사실적인 옷의 텍스쳐
+        더욱 더 사실적인 <span className='font-semibold'>옷의 텍스쳐</span>
         </h1>
         <h1 className='mt-2 lg:mt-3 text-gray-500 text-center text-xs lg:text-base font-normal px-5 
         break-keep'>
@@ -270,9 +266,9 @@ const RoofTopPage = () => {
         <Image
           src="/images/RoofTop_Cloth_Material.png"
           alt="RoofTop_Example"
-          width={1200}
-          height={600}
-          className="w-full mt-5 lg:mt-10 px-5"
+          width={500}
+          height={500}
+          className="max-w-[1200px] w-full mt-5 lg:mt-10 px-5"
         />
         
       </div>
