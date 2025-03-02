@@ -1,5 +1,5 @@
 import { CS_EMAIL } from '@/constants/basic';
-
+import Image from 'next/image';
 
 const RoofTopPage = () => {
 
@@ -19,7 +19,12 @@ const RoofTopPage = () => {
           Your browser does not support the video tag.
         </video>
         <div className="absolute top-8 w-full h-1 flex items-center justify-center">
-          <img src="/images/RoofTop-Icon.svg" alt="RoofTop_Icon" width={40} height={40} />
+          <Image
+            src="/images/RoofTop-Icon.svg"
+            alt="RoofTop_Icon"
+            width={40}
+            height={40}
+          />
           <h1 className="text-base lg:text-xl font-black text-white tracking-[1px]">ROOFTOP</h1>
           <a
             href={`mailto:${CS_EMAIL}`}
@@ -43,20 +48,20 @@ const RoofTopPage = () => {
       <div className="mt-48">
 
         <h1 className='mt-7 text-[#FFF] text-center text-2xl lg:text-3xl bg-gradient-to-r from-white via-white to-black text-transparent bg-clip-text break-keep'>
-          "
+          &ldquo;
           <span className='font-semibold'>
             AI CUSTOMIZATION
             <span className='block lg:hidden'>+</span>
             <span className='hidden lg:inline'> + </span>
           </span>
           <span className='font-semibold'>
-            <span className='block lg:inline'>REAL TIME MEDIA ART"</span>
+            <span className='block lg:inline'>REAL TIME MEDIA ART&rdquo;</span>
           </span>
 
         </h1>
         <h1 className='mt-2 lg:mt-3 text-gray-300 text-center text-xs lg:text-base font-medium'>
-          "AI 기반으로 디자인하고, 가상 공간에서 체험하며, <span className='block lg:hidden'> </span>브랜드와 소통하는 새로운 방식의 패션 & 예술 경험.
-          ”</h1>
+          &ldquo;AI 기반으로 디자인하고, 가상 공간에서 체험하며, <span className='block lg:hidden'> </span>브랜드와 소통하는 새로운 방식의 패션 & 예술 경험.
+          &rdquo;</h1>
 
         <button className="mt-48 text-center mx-auto flex flex-col rounded-full bg-gray-800 px-5  font-semibold text-white shadow-md hover:bg-gray-900  py-1 text-xs lg:text-sm">
           서비스 소개
@@ -67,7 +72,13 @@ const RoofTopPage = () => {
         </h1>
         <hr className="w-full max-w-[400px] lg:max-w-[800px] mx-auto mt-4 border-white" />
         <div className='flex justify-center pt-4 px-8 lg:pt-8'>
-          <img src="/images/RoofTop_1.png" alt="RoofTop_1" className='w-full max-w-[800px]' />
+          <Image
+            src="/images/RoofTop_1.png"
+            alt="RoofTop_1"
+            width={800}
+            height={600}
+            className="w-full max-w-[800px] h-full object-cover"
+          />
         </div>
         <h1 className='font-normal text-center text-xs lg:text-xl text-gray-300 mt-2 lg:mt-10'>
           의상 입히기, 재질 설정, 악세사리 등 수많은 기능들을 포함한 리얼타임 아바타 커스텀
@@ -80,20 +91,24 @@ const RoofTopPage = () => {
         <div className='flex flex-col w-full'>
           <div className='px-5 flex flex-row pt-4 lg:pt-8 items-center justify-center w-full mx-auto max-w-[1400px]'>
             <div className='mb-20 flex flex-col pr-20 lg:pr-40 '>
-              <img
+              <Image
                 src="/images/RoofTop_2.png"
                 alt="RoofTop_Example"
-                className='max-w-[600px] w-full object-contain'
+                width={600}
+                height={600}
+                className="max-w-[600px] w-full object-contain"
               />
               <h1 className='font-semibold text-center text-xs lg:text-base text-gray-300 mt-2'>
                 AI 이미지 스타일 선택 및 사용자 프롬프트 입력
               </h1>
             </div>
             <div className='flex flex-col -ml-20'>
-              <img
+              <Image
                 src="/images/RoofTop_3.png"
                 alt="RoofTop_Example"
-                className='max-w-[300px] w-full relative z-10'
+                width={300}
+                height={300}
+                className="max-w-[300px] w-full relative z-10"
               />
               <h1 className='font-semibold text-center text-xs lg:text-base text-gray-300 mt-2'>
                 실시간 이미지 생성 및 아바타 옷 패턴 반영
@@ -143,13 +158,25 @@ const RoofTopPage = () => {
       <hr className="w-full max-w-[400px] lg:max-w-[800px] mx-auto mt-4 border-white" />
       <div className='px-5 flex flex-row pt-10 items-start justify-center w-full mx-auto max-w-[1400px] space-x-10'>
         <div className='flex flex-col'>
-          <img src="/images/RoofTop_GameStyle.png" alt="RoofTop_Example" className='max-w-[500px] w-full ' />
+          <Image
+            src="/images/RoofTop_GameStyle.png"
+            alt="RoofTop_Example"
+            width={500}
+            height={500}
+            className="w-full"
+          />
           <h1 className='font-semibold text-center text-xs lg:text-base text-gray-400 mt-2'>
             Game Style 예시
           </h1>
         </div>
         <div className='flex flex-col'>
-          <img src="/images/RoofTop_1.png" alt="RoofTop_Example" className='max-w-[500px] w-full' />
+          <Image
+            src="/images/RoofTop_1.png"
+            alt="RoofTop_Example"
+            width={500}
+            height={500}
+            className="w-full"
+          />
           <h1 className='font-semibold text-center text-xs lg:text-base text-gray-400 mt-2'>
             Beach Style 예시
           </h1>
@@ -161,13 +188,25 @@ const RoofTopPage = () => {
       <hr className="w-full max-w-[400px] lg:max-w-[800px] mx-auto mt-4 border-white" />
       <div className='flex flex-row pt-10 items-start justify-center w-full mx-auto max-w-[1400px] space-x-10 px-5'>
         <div className='flex flex-col'>
-          <img src="/images/RoofTop_BrandStyle_1.png" alt="RoofTop_Example" className='max-w-[500px] w-full' />
+          <Image
+            src="/images/RoofTop_BrandStyle_1.png"
+            alt="RoofTop_Example"
+            width={500}
+            height={500}
+            className="w-full"
+          />
           <h1 className='font-semibold text-center text-xs lg:text-base text-gray-400 mt-2'>
             베이스 옷 제작
           </h1>
         </div>
         <div className='flex flex-col'>
-          <img src="images/RoofTop_BrandStyle_2.png" alt="RoofTop_Example" className='max-w-[500px] w-full ' />
+          <Image
+            src="/images/RoofTop_BrandStyle_2.png"
+            alt="RoofTop_Example"
+            width={500}
+            height={500}
+            className="w-full"
+          />
           <h1 className='font-semibold text-center text-xs lg:text-base text-gray-400 mt-2'>
             AI 이미지 스타일 및 고유 패턴 적용
           </h1>
@@ -224,7 +263,13 @@ const RoofTopPage = () => {
           타임 실감형 고퀄리티 의상을 3D SHOWROOM
           에서 체험
         </h1>
-        <img src="/images/RoofTop_Cloth_Material.png" alt="RoofTop_Example" className='max-w-[1200px] w-full mt-5 lg:mt-10 px-5' />
+        <Image
+          src="/images/RoofTop_Cloth_Material.png"
+          alt="RoofTop_Example"
+          width={1200}
+          height={600}
+          className="w-full mt-5 lg:mt-10 px-5"
+        />
         
       </div>
 

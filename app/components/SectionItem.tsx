@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import Image from 'next/image';
 
 interface SectionItemProps {
   title: string;
@@ -18,10 +19,12 @@ const SectionItem: FC<SectionItemProps> = ({ title, imageSrc, index, className }
       </h1>
       <hr className="w-full max-w-[400px] lg:max-w-[800px] mx-auto mt-4 border-white" />
       <div className="flex justify-center mt-8 lg:mt-10 px-8">
-        <img
+        <Image
           src={imageSrc}
-          alt="RoofTop Example"
-          className="w-full max-w-[800px]"
+          alt={title}
+          width={500}
+          height={300}
+          className="w-full h-full object-cover"
         />
       </div>
     </section>
