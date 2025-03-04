@@ -259,7 +259,7 @@ const RoofTopPage = () => {
         *본 영상은 미디어 아트의 예시이며 브랜드의 컨셉과 니즈에 따른 미디어
         아트 주문 제작을 진행합니다.
       </h1>
-      <div className="mx-auto mb-40 mt-48 flex max-w-[1400px] flex-col items-center">
+      <div className="mx-auto mb-40 mt-24 lg:mt-48 flex max-w-[1400px] flex-col items-center">
         <h1 className="text-center text-2xl text-white lg:mt-7 lg:text-3xl">
           더욱 더 사실적인 <span className="font-semibold">옷의 텍스쳐</span>
         </h1>
@@ -275,6 +275,11 @@ const RoofTopPage = () => {
           height={500}
           className="mt-5 w-full max-w-[1200px] px-5 lg:mt-10"
         />
+      </div>
+      <hr className="mx-auto mt-4 mb-8 lg:mb-10 w-full border-gray-500 lg:max-w-[1400px] px-10" />
+      <div className='mx-auto flex flex-col w-full max-w-[1400px] item-center mb-20 px-5'>
+      <h1 className='text-gray-200 text-[10px] lg:text-[12px] font-semibold'>© 2023 Dolphin In Cali. All rights reserved.</h1>
+      <h1 className='text-gray-300 text-[10px] lg:text-[12px]'>contact : dolphinincali.dev@gmail.com</h1>
       </div>
     </main>
   );
