@@ -24,7 +24,9 @@ const MainDomainCard = ({ content }: MainDomainCardProps) => {
       </div>
       <div className="flex flex-col gap-y-4">
         <Separator className="w-16 bg-neutral-800" />
-        <p className="line-clamp-3 text-neutral-800">{content.description}</p>
+        <p className="line-clamp-3 break-keep text-neutral-800">
+          {content.description}
+        </p>
       </div>
     </div>
   );

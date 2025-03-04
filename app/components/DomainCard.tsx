@@ -26,14 +26,12 @@ const DomainCard = ({ content }: DomainCardProps) => {
         <Image
           src={content.thumbnail}
           alt="Web Design & Development"
-          className="h-40 w-full rounded-xl"
-          width={200}
-          height={200}
+          className="h-40 w-full rounded-xl object-cover"
         />
       </div>
       <div className="flex flex-col gap-y-4">
         <Separator className="w-16 bg-neutral-800" />
-        <p className={cn('text-neutral-800', lineClamp)}>
+        <p className={cn('break-keep text-neutral-800', lineClamp)}>
           {content.description}
         </p>
       </div>
