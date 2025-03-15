@@ -2,20 +2,20 @@ import dummyImage1 from '@assets/images/dummy-portfolio-1.png';
 import dummyImage2 from '@assets/images/dummy-portfolio-2.png';
 import Image from 'next/image';
 
-import { caseStudyCards } from '@/constants/case-studies-section';
+import { caseStudyItems } from '@/constants/case-studies-section';
 
 import CaseStudyCard from './CaseStudyCard';
 
 const CaseStudyList = () => {
-  if (caseStudyCards.length % 2 !== 0)
+  if (caseStudyItems.length % 2 !== 0)
     throw new Error('The number of case study items should be even');
 
-  const rowNumber = caseStudyCards.length / 2;
+  const rowNumber = caseStudyItems.length / 2;
   return (
     <div className="flex flex-col gap-16">
       {Array.from({ length: rowNumber }).map((_, index) => {
-        const evenItem = caseStudyCards[index * 2];
-        const oddItem = caseStudyCards[index * 2 + 1];
+        const evenItem = caseStudyItems[index * 2];
+        const oddItem = caseStudyItems[index * 2 + 1];
         return (
           <div
             className="flex w-full flex-row gap-x-12 space-y-8"

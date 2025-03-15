@@ -1,5 +1,6 @@
 import { AsteriskIcon } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Fragment } from 'react';
 
 import type { CaseStudyInfo } from '@/constants/case-studies-section';
@@ -10,7 +11,7 @@ type CaseStudyCardProps = {
 
 const CaseStudyCard = ({ content }: CaseStudyCardProps) => {
   return (
-    <div className="flex w-full flex-col gap-y-4">
+    <Link className="flex w-full flex-col gap-y-4" href={content.path}>
       <Image
         src={content.thumbnail}
         alt={content.title}
@@ -32,7 +33,7 @@ const CaseStudyCard = ({ content }: CaseStudyCardProps) => {
           {content.title}
         </span>
       </div>
-    </div>
+    </Link>
   );
 };
 
