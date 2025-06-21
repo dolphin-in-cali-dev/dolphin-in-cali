@@ -287,6 +287,7 @@ const RoofTopPage = () => {
       <hr className="mx-auto mt-4 mb-8 lg:mb-10 w-full border-gray-500 lg:max-w-[1400px] px-10" />
       <div className='mx-auto flex flex-col w-full max-w-[1400px] item-center mb-20 px-5'>
       <h1 className='text-gray-200 text-[10px] lg:text-[12px] font-semibold'>© 2023 Dolphin In Cali. All rights reserved.</h1>
+      <h1 className='text-gray-200 text-[10px] lg:text-[12px] font-semibold'>대표자 : 변진영 전화번호 : 010-5923-3761</h1>
       <h1 className='text-gray-300 text-[10px] lg:text-[12px]'>contact : dolphinincali.dev@gmail.com</h1>
       </div>
     </main>
