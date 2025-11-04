@@ -1,7 +1,7 @@
 'use client';
 
-import { AsteriskIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { AsteriskIcon } from 'lucide-react';
 import Image from 'next/image';
 import { Fragment, useState } from 'react';
 

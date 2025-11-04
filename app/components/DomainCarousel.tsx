@@ -1,10 +1,7 @@
 'use client';
 
-import { ArrowUpRight } from 'lucide-react';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import { buttonVariants } from '@/components/ui/button';
 import {
   Carousel,
   type CarouselApi,
@@ -14,11 +11,9 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { domainCards } from '@/constants/domain-section';
-import { cn } from '@/lib/utils';
 
 import CarouselIndicator from './CarouselIndicator';
 import DomainCard from './DomainCard';
-import MainDomainCard from './MainDomainCard';
 
 const DomainCarousel = () => {
   const [api, setApi] = useState<CarouselApi>();

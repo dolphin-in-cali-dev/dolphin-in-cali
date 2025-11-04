@@ -1,8 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
-import { useState } from 'react';
 
 import type { DomainCardInfo } from '@/constants/domain-section';
 import { cn } from '@/lib/utils';
@@ -12,7 +10,6 @@ type DomainCardProps = {
 };
 
 const DomainCard = ({ content }: DomainCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
   const titleLineNumber = (content.title.match(/\n/g) || []).length + 1;
   const lineClamp = {
     1: 'line-clamp-4',
@@ -23,9 +20,7 @@ const DomainCard = ({ content }: DomainCardProps) => {
 
   return (
     <motion.div
-      className="group relative h-full overflow-hidden rounded-2xl  sm:rounded-3xl"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="group relative h-full overflow-hidden rounded-2xl sm:rounded-3xl"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
