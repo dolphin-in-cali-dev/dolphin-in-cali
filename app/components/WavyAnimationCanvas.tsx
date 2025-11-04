@@ -121,8 +121,22 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
       canvas.height = canvas.parentElement?.clientHeight || window.innerHeight;
       gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
-      const originalX = canvas.width - 100;
-      const originalY = 100;
+      // 화면 크기에 따른 반응형 위치 계산 (모바일 대응)
+      const isMobile = canvas.width < 640;
+      let originalX, originalY;
+      
+      if (isMobile) {
+        // 모바일: 화면 중앙
+        originalX = canvas.width / 2;
+        originalY = canvas.height / 2;
+      } else {
+        // 데스크톱: 우측 상단
+        const paddingX = Math.min(canvas.width * 0.08, 120);
+        const paddingY = Math.min(canvas.height * 0.12, 120);
+        originalX = canvas.width - paddingX;
+        originalY = paddingY;
+      }
+      
       mouseRef.current = { x: originalX, y: originalY };
       targetMouseRef.current = { x: originalX, y: originalY };
       setTextPosition({ x: originalX, y: originalY });
@@ -161,6 +175,10 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
     requestAnimationFrame(render);
 
     const handleMouseMove = (event: MouseEvent) => {
+      // 모바일에서는 마우스 이벤트 무시
+      const isMobile = canvas.width < 640;
+      if (isMobile) return;
+      
       const rect = canvas.getBoundingClientRect();
       targetMouseRef.current = {
         x: event.clientX - rect.left,
@@ -169,8 +187,22 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
     };
 
     const handleMouseLeave = () => {
-      const originalX = canvas.width - 100;
-      const originalY = 100;
+      // 화면 크기에 따른 반응형 위치 계산 (모바일 대응)
+      const isMobile = canvas.width < 640;
+      let originalX, originalY;
+      
+      if (isMobile) {
+        // 모바일: 화면 중앙
+        originalX = canvas.width / 2;
+        originalY = canvas.height / 2;
+      } else {
+        // 데스크톱: 우측 상단
+        const paddingX = Math.min(canvas.width * 0.08, 120);
+        const paddingY = Math.min(canvas.height * 0.12, 120);
+        originalX = canvas.width - paddingX;
+        originalY = paddingY;
+      }
+      
       targetMouseRef.current = { x: originalX, y: originalY };
     };
 
@@ -195,7 +227,7 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <span className="font-clash text-2xl font-black text-white">
+        <span className="font-clash text-5xl font-black text-white sm:text-4xl lg:text-3xl">
           CONTACT
         </span>
       </div>

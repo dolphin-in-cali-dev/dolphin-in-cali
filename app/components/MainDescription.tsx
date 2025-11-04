@@ -1,35 +1,52 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
 import { Separator } from '@/components/ui/separator';
 
 const MainDescription = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '-50px',
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col gap-y-20">
-      <div className="flex items-end justify-between gap-x-20">
-        <div className="flex flex-col gap-y-4">
-          <p className="text-4xl leading-[48px] text-neutral-800">
-            From Concept to Creation:
+    <div ref={sectionRef} className="flex w-full flex-col items-center justify-center gap-y-12 sm:gap-y-16 lg:gap-y-20">
+      <div className="flex w-full flex-col items-center justify-center">
+        <div className="flex w-full flex-col items-center gap-y-3 pb-24 sm:gap-y-4">
+          <p
+            className={`break-keep text-center text-lg leading-8 text-neutral-700 transition-all duration-700 ease-out sm:text-2xl sm:leading-10 lg:text-3xl lg:leading-[3rem] ${isVisible
+                ? 'translate-y-0 opacity-100'
+                : 'translate-y-8 opacity-0'
+              }`}
+            style={{ transitionDelay: '0ms' }}
+          >
+            돌핀인캘리는 효과적인 디지털 경험을 설계하는 데 중점을 둡니다.
             <br />
-            Comprehensive Digital Solution
-          </p>
-          <Separator className="bg-neutral-800" />
-          <p className="text-xl text-neutral-800">
-            아이디어에서 실행까지:
-            <br />
-            통합 디지털 솔루션
+            아름답고 기능적인 웹앱을 만드는 것을 넘어, 모든 과정을 깊이 있게 동행합니다.
           </p>
         </div>
-        <p className="text-right text-xl leading-7 text-neutral-600">
-          돌핀인캘리는 단순히 아름답고 기능적인 웹앱을 만드는 것을 넘어,
-          <br />
-          효과적인 디지털 경험을 설계하는 데 중점을 둡니다.
-          <br />
-          우리는 고객의 성공을 곧 우리의 성공으로 여기며,
-          <br />
-          브랜드 기획에서 서비스 개발까지, 모든 과정을 깊이 있게 동행합니다.
-        </p>
       </div>
-      <span className="self-end text-neutral-500">
-        WEBSITE © Copyright 2023 DOLPHIN IN CALI
-      </span>
     </div>
   );
 };
