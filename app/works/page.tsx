@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 
-import { caseStudyCards } from '@/constants/case-studies-section';
+import { caseStudyItems } from '@/constants/case-studies-section';
 
 export const metadata: Metadata = {
   title: 'Works',
@@ -20,7 +20,7 @@ const WorksPage = () => {
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {caseStudyCards.map((project, index) => (
+        {caseStudyItems.map((project, index) => (
           <div
             key={index}
             className="group overflow-hidden rounded-2xl bg-white shadow-md transition-all hover:shadow-xl"
