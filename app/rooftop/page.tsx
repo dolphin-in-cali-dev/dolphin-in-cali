@@ -42,10 +42,18 @@ const RoofTopPage = () => {
             <h1 className="text-center text-xs font-normal text-gray-300 lg:text-base">
               브랜드 맞춤형 AI 기반 인터랙티브 전시 소프트웨어
             </h1>
-            <h1 className="bg-gradient-to-r from-white via-white to-gray-500 bg-clip-text text-center text-3xl font-semibold text-transparent lg:text-5xl">
+            <h1 className="bg-gradient-to-r from-white via-white to-gray-500 bg-clip-text text-center text-3xl font-semibold text-transparent lg:text-5xl pb-0 lg:pb-10">
               AI-Generated
               <br /> Interactive Exhibition SoftWare
             </h1>
+            <a
+              href="https://share.streampixel.io/68519b6e1aaed6e7b6e0eefe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mx-auto mt-10 flex w-fit items-center justify-center rounded-full bg-white px-8 py-3 text-base font-bold text-black shadow-lg transition hover:bg-gray-200 hover:text-black hover:shadow-xl lg:text-lg"
+            >
+             체험하기 (PC버전)
+            </a>
           </div>
         </div>
       </div>
@@ -279,6 +287,7 @@ const RoofTopPage = () => {
       <hr className="mx-auto mt-4 mb-8 lg:mb-10 w-full border-gray-500 lg:max-w-[1400px] px-10" />
       <div className='mx-auto flex flex-col w-full max-w-[1400px] item-center mb-20 px-5'>
       <h1 className='text-gray-200 text-[10px] lg:text-[12px] font-semibold'>© 2023 Dolphin In Cali. All rights reserved.</h1>
+      <h1 className='text-gray-200 text-[10px] lg:text-[12px] font-semibold'>대표자 : 변진영 전화번호 : 010-5923-3761</h1>
       <h1 className='text-gray-300 text-[10px] lg:text-[12px]'>contact : dolphinincali.dev@gmail.com</h1>
       </div>
     </main>
