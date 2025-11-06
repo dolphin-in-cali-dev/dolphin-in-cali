@@ -29,7 +29,7 @@ const DomainCard = ({ content }: DomainCardProps) => {
       {/* Card content */}
       <div className="relative flex h-full flex-col gap-y-6 rounded-2xl p-4 transition-all duration-300 sm:gap-y-8 sm:rounded-3xl sm:p-5 lg:gap-y-10 lg:p-6">
         <div className="flex flex-col gap-y-4 sm:gap-y-5 lg:gap-y-6">
-          <h4 className="whitespace-pre-line font-clash text-2xl font-bold text-neutral-800 transition-colors duration-300 group-hover:text-blue-600 sm:text-3xl lg:text-4xl">
+          <h4 className="whitespace-pre-line font-clash text-2xl font-bold text-neutral-700 transition-colors duration-300 group-hover:text-blue-600 sm:text-3xl lg:text-4xl">
             {content.title}
           </h4>
           
@@ -53,7 +53,7 @@ const DomainCard = ({ content }: DomainCardProps) => {
         <div className="flex flex-col gap-y-3 sm:gap-y-4">
           <p
             className={cn(
-              'break-keep text-sm text-neutral-700 transition-colors duration-300 group-hover:text-neutral-900 sm:text-base',
+              'break-keep text-sm text-neutral-600 transition-colors duration-300 group-hover:text-neutral-900 sm:text-base',
               lineClamp,
             )}
           >
