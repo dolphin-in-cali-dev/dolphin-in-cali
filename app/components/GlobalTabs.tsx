@@ -38,7 +38,7 @@ const GlobalTabs = () => {
             alt="Logo"
             width={28}
             height={28}
-            className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8"
+            className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 lg: pb-1.5"
           />
           <h1 className={cn(
             "whitespace-nowrap text-sm font-black sm:text-base lg:text-2xl",
