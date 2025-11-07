@@ -13,7 +13,7 @@ const TitleAnimation = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="relative max-h-[360px] overflow-hidden rounded-t-2xl rounded-br-2xl rounded-bl-2xl sm:max-h-[500px] sm:rounded-t-3xl sm:rounded-br-3xl lg:max-h-[600px]">
+    <div className="relative h-full w-full overflow-hidden rounded-t-2xl rounded-br-2xl rounded-bl-2xl sm:rounded-t-3xl sm:rounded-br-3xl">
       {/* Right Bottom - Copyright */}
       <div className="absolute bottom-4 right-4 z-50 sm:bottom-6 sm:right-6 lg:bottom-8 lg:right-10">
         <span className="font-sans text-[10px] font-medium text-white sm:text-xs lg:text-lg">© 2023.</span>

@@ -6,6 +6,13 @@ import { Anonymous_Pro, Plus_Jakarta_Sans, Roboto } from 'next/font/google';
 
 import GlobalTabs from './components/GlobalTabs';
 
+// Lenis 인스턴스를 전역으로 관리
+declare global {
+  interface Window {
+    lenis?: any;
+  }
+}
+
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta',
   subsets: ['latin'],

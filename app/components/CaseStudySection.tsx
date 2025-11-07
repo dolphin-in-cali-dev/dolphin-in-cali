@@ -63,6 +63,7 @@ const CaseStudySection = () => {
             <Link
               className="group flex w-fit items-center gap-x-1 transition-colors duration-300 sm:gap-x-1.5"
               href="/works"
+              scroll={true}
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent transition-colors duration-300 group-hover:bg-black sm:h-10 sm:w-10 lg:h-12 lg:w-12">
                 <ArrowUpRight className="h-4 w-4 transition-colors duration-300 group-hover:text-white sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
@@ -79,8 +80,8 @@ const CaseStudySection = () => {
         <div className="mt-8 px-6 space-y-6 sm:mt-10 sm:space-y-16 lg:mt-8 lg:space-y-12">
           <CaseStudyList />
           <Marquee autoFill className="py-1 sm:py-8">
-            <span className="ml-20 text-xl font-medium sm:ml-32 sm:text-2xl lg:text-3xl">
-              what is your idea? 🤔
+            <span className="ml-20 text-xl font-medium font-clash sm:ml-32 sm:text-2xl lg:text-3xl">
+            what is your idea? 🤔
             </span>
           </Marquee>
         </div>

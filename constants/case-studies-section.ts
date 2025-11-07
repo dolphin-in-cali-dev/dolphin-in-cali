@@ -8,6 +8,7 @@ export type CaseStudyInfo = {
   thumbnail: StaticImageData | string;
   tags: string[];
   path: string;
+  isFeatured?: boolean;
 };
 
 export const caseStudyItems: CaseStudyInfo[] = [
@@ -16,47 +17,83 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: 'https://picsum.photos/401',
     tags: ['Web', 'Dev & Design'],
     path: 'case-study/s2d-lab',
-  },
-  {
-    title: 'Rooftop Project',
-    thumbnail: 'https://picsum.photos/402',
-    tags: ['AI', '3D Graphics', 'Dev & Design'],
-    path: 'case-study/rooftop-project',
+    isFeatured: false,
   },
   {
     title: '픽포',
     thumbnail: pickForThumbnail,
     tags: ['App', 'Dev & Design'],
     path: 'case-study/pickfor',
+    isFeatured: true,
+  },
+  {
+    title: 'Rooftop Project',
+    thumbnail: 'https://picsum.photos/402',
+    tags: ['AI', '3D Graphics', 'Dev & Design'],
+    path: 'case-study/rooftop-project',
+    isFeatured: false,
   },
   {
     title: 'EDEN WOLRD',
     thumbnail: 'https://picsum.photos/404',
     tags: ['Web', 'Development'],
     path: 'case-study/eden-world',
+    isFeatured: false,
   },
   {
     title: '로봇다이브',
     thumbnail: robotDiveThumbnail,
     tags: ['Web', 'Dev & Design'],
-    path: 'case-study/robot-dive',
+    path: 'https://www.allrobotai.com/',
+    isFeatured: true,
   },
   {
     title: '아트리어',
     thumbnail: 'https://picsum.photos/406',
     tags: ['Consulting', 'Design'],
     path: 'case-study/artreer',
+    isFeatured: false,
   },
   {
     title: '진심꽃방 오브제',
     thumbnail: sincereFlowerThumbnail,
     tags: ['Web', 'Dev & Design'],
     path: 'case-study/objet-sincerity',
+    isFeatured: false,
   },
   {
     title: '닿기를',
     thumbnail: 'https://picsum.photos/408',
     tags: ['Web', 'Dev & Design'],
     path: 'case-study/toreachu',
+    isFeatured: false,
   },
+  {
+    title: '으랏차라 이사',
+    thumbnail: 'https://picsum.photos/408',
+    tags: ['Web', 'Dev & Design'],
+    path: 'https://www.euratchacha24.com/',
+    isFeatured: true,
+  },
+  {
+    title: '노아인테리어',
+    thumbnail: 'https://picsum.photos/408',
+    tags: ['Web', 'Dev & Design'],
+    path: 'https://noahint.imweb.me/',
+    isFeatured: false,
+  },
+  {
+    title: '컷플',
+    thumbnail: 'https://picsum.photos/408',
+    tags: ['Web', 'Dev & Design'],
+    path: 'https://www.cutple.com/',
+    isFeatured: true,
+  },
+  {
+    title: '제이엔디써키트(주)',
+    thumbnail: 'https://picsum.photos/408',
+    tags: ['Web', 'Dev & Design'],
+    path: 'https://www.jndcircuit.co.kr/',
+    isFeatured: true,
+  }
 ];

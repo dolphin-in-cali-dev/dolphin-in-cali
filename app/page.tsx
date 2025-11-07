@@ -4,6 +4,7 @@ import ContactCard from './components/ContactCard';
 import DomainSection from './components/DomainSection';
 import Footer from './components/Footer';
 import TitleSection from './components/TitleSection';
+
 export default function Home() {
   return (
     <div className="overflow-x-hidden">
