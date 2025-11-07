@@ -24,7 +24,7 @@ const CaseStudyCard = ({ content }: CaseStudyCardProps) => {
         <Image
           src={content.thumbnail}
           alt={content.title}
-          className="aspect-video w-full rounded-2xl border sm:rounded-3xl"
+          className="aspect-video w-full rounded-2xl sm:rounded-3xl"
           width={400}
           height={400}
         />
@@ -35,7 +35,7 @@ const CaseStudyCard = ({ content }: CaseStudyCardProps) => {
           animate={{
             opacity: isHovered ? 1 : 0,
           }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.5 }}
         />
       </div>
       

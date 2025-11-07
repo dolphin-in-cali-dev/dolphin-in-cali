@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 
 import CaseStudyList from './CaseStudyList';
+import GradualBlur from './GradualBlur';
 
 const CaseStudySection = () => {
   const [isFixed, setIsFixed] = useState(false);
@@ -41,13 +42,24 @@ const CaseStudySection = () => {
       <div className="mx-auto max-w-[1440px] pb-8 sm:pb-24 lg:pb-16 ">
         <div
           ref={headerRef}
-          className={`z-40 pb-2 pt-4 transition-all duration-500 ease-out sm:pb-4 lg:pb-5 ${isFixed
-              ? 'fixed left-0 right-0 top-0 bg-transparent backdrop-blur-xl'
-              : 'relative bg-background'
+          className={`pb-2 pt-4 transition-all duration-500 ease-out sm:pb-4 lg:pb-5 ${isFixed
+              ? 'fixed left-0 right-0 top-0 z-[200]'
+              : 'relative z-40 bg-background'
             }`}
           style={isFixed ? { maxWidth: '1440px', margin: '0 auto', paddingLeft: '1.5rem', paddingRight: '1.5rem' } : {}}
         >
-          <div className="flex items-center justify-end gap-x-3 px-6 sm:gap-x-4">
+          <GradualBlur
+            target={isFixed ? "page" : "parent"}
+            position="top"
+            height="8rem"
+            strength={4.5}
+            divCount={3}
+            curve="bezier"
+            exponential={true}
+            opacity={1}
+            zIndex={10}
+          />
+          <div className="flex items-center justify-end gap-x-3 px-6 sm:gap-x-4 relative z-[201]">
             <Link
               className="group flex w-fit items-center gap-x-1 transition-colors duration-300 sm:gap-x-1.5"
               href="/works"
@@ -61,10 +73,9 @@ const CaseStudySection = () => {
             </Link>
           </div>
         </div>
-
+          
         {/* Spacer when fixed */}
         {isFixed && <div className="h-[60px] sm:h-[80px] lg:h-[100px]" />}
-
         <div className="mt-8 px-6 space-y-6 sm:mt-10 sm:space-y-16 lg:mt-8 lg:space-y-12">
           <CaseStudyList />
           <Marquee autoFill className="py-1 sm:py-8">

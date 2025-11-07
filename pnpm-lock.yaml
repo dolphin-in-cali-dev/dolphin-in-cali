@@ -32,6 +32,9 @@ importers:
       globals:
         specifier: ^15.14.0
         version: 15.14.0
+      gsap:
+        specifier: ^3.13.0
+        version: 3.13.0
       gsp:
         specifier: ^0.5.4
         version: 0.5.4
@@ -41,6 +44,9 @@ importers:
       lucide-react:
         specifier: ^0.471.0
         version: 0.471.0(react@19.0.0)
+      mathjs:
+        specifier: ^15.1.0
+        version: 15.1.0
       next:
         specifier: 15.1.4
         version: 15.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -117,6 +123,10 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@babel/runtime@7.28.4':
+    resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
+    engines: {node: '>=6.9.0'}
 
   '@emnapi/runtime@1.3.1':
     resolution: {integrity: sha512-kEBmG8KyqtxJZv+ygbEim+KCGtIq1fC22Ms3S4ziXmYKm8uyoLX0MHONVKwp+9opg390VaKRNt4a7A9NwmpNhw==}
@@ -1061,6 +1071,9 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
+  complex.js@2.4.2:
+    resolution: {integrity: sha512-qtx7HRhPGSCBtGiST4/WGHuW+zeaND/6Ld+db6PbrulIB1i2Ev/2UPiqcmpQNPSyfBKraC0EOvOKCB5dGZKt3g==}
+
   component-emitter@1.3.1:
     resolution: {integrity: sha512-T0+barUSQRTUQASh8bx02dl+DhF54GtIDY13Y3m9oWTklKbb3Wv974meRpeZ3lp1JpLVECWWNHC4vaG2XHXouQ==}
 
@@ -1195,6 +1208,9 @@ packages:
   decamelize@1.2.0:
     resolution: {integrity: sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==}
     engines: {node: '>=0.10.0'}
+
+  decimal.js@10.6.0:
+    resolution: {integrity: sha512-YpgQiITW3JXGntzdUmyUR1V812Hn8T1YVXhCu+wO3OpS4eU9l4YdD3qjyiKdV6mvV29zapkMeD390UVEf2lkUg==}
 
   decode-uri-component@0.2.2:
     resolution: {integrity: sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==}
@@ -1364,6 +1380,9 @@ packages:
 
   es6-weak-map@2.0.3:
     resolution: {integrity: sha512-p5um32HOTO1kP+w7PRnB+5lQ43Z6muuMuIMffvDN8ZB4GcnjLBV6zGStpbASIMk4DCAvEaamhe2zhyCb/QXXsA==}
+
+  escape-latex@1.2.0:
+    resolution: {integrity: sha512-nV5aVWW1K0wEiUIEdZ4erkGGH8mDxGyxSeqPzRNtWP7ataw+/olFObw7hujFWlVjNsaDFw5VZ5NzVSIqRgfTiw==}
 
   escape-string-regexp@1.0.5:
     resolution: {integrity: sha512-vbRorB5FUQWvla16U8R/qgaFIya2qGzwDrNmCZuYKrbdSUMG6I1ZCGQRefkRVhuOkIGVne7BQ35DSfo1qvJqFg==}
@@ -1697,6 +1716,9 @@ packages:
     resolution: {integrity: sha512-1lLKB2Mu3aGP1Q/2eCOx0fNbRMe7XdwktwOruhfqqd0rIJWwN4Dh+E3hrPSlDCXnSR7UtZ1N38rVXm+6+MEhJQ==}
     engines: {node: '>= 0.12'}
 
+  fraction.js@5.3.4:
+    resolution: {integrity: sha512-1X1NTtiJphryn/uLQz3whtY6jK3fTqoE3ohKs0tT+Ujr1W59oopxmoEh7Lu5p6vBaPbgoM0bzveAW4Qi5RyWDQ==}
+
   fragment-cache@0.2.1:
     resolution: {integrity: sha512-GMBAbW9antB8iZRHLoGw0b3HANt57diZYFO/HL1JGIC1MjKrdmhxvrJbupnVvpys0zsz7yBApXdQyfepKly2kA==}
     engines: {node: '>=0.10.0'}
@@ -1861,6 +1883,9 @@ packages:
 
   graphemer@1.4.0:
     resolution: {integrity: sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==}
+
+  gsap@3.13.0:
+    resolution: {integrity: sha512-QL7MJ2WMjm1PHWsoFrAQH/J8wUeqZvMtHO58qdekHpCfhvhSL4gSiz6vJf5EeMP0LOn3ZCprL2ki/gjED8ghVw==}
 
   gsp@0.5.4:
     resolution: {integrity: sha512-mB5JkY5PoFCBNeJahZmRogt2lvLSUau6aLPZnrag0z0ZA+zjwL2RYVufZSBvm9DbBpWUDr8s/0uYy+Dj31my8Q==}
@@ -2283,6 +2308,9 @@ packages:
   jasmine-core@2.99.1:
     resolution: {integrity: sha512-ra97U4qu3OCcIxvN6eg3kyy8bLrID/TgxafSGMMICg3SFx5C/sUfDPpiOh7yoIsHdtjrOVdtT9rieYhqOsh9Ww==}
 
+  javascript-natural-sort@0.7.1:
+    resolution: {integrity: sha512-nO6jcEfZWQXDhOiBtG2KvKyEptz7RVbpGP4vTD2hLBdmNQSsCiicO2Ioinv6UI4y9ukqnBpy+XZ9H6uLNgJTlw==}
+
   jiti@1.21.7:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
     hasBin: true
@@ -2491,6 +2519,11 @@ packages:
 
   math-random@1.0.4:
     resolution: {integrity: sha512-rUxjysqif/BZQH2yhd5Aaq7vXMSx9NdEsQcyA07uEzIvxgI7zIr33gGsh+RU0/XjmQpCW7RsVof1vlkvQVCK5A==}
+
+  mathjs@15.1.0:
+    resolution: {integrity: sha512-HfnAcScQm9drGryodlDqeS3WAl4gUTYGDcOtcqL/8s23MZ28Ib1i8XnYK3ZdjNuaW/L4BAp9lIp8vxAMrcuu1w==}
+    engines: {node: '>= 18'}
+    hasBin: true
 
   media-typer@0.3.0:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
@@ -3294,6 +3327,9 @@ packages:
   scss-tokenizer@0.2.3:
     resolution: {integrity: sha512-dYE8LhncfBUar6POCxMTm0Ln+erjeczqEvCJib5/7XNkdw1FkUGgwMPY360FY0FgPWQxHWCx29Jl3oejyGLM9Q==}
 
+  seedrandom@3.0.5:
+    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
+
   semver@5.3.0:
     resolution: {integrity: sha512-mfmm3/H9+67MCVix1h+IXTpDwL6710LyHuk7+cWC9T1mE0qz4iHhh6r4hU2wrIT9iTsAAC2XQRvfblL028cpLw==}
     hasBin: true
@@ -3609,6 +3645,9 @@ packages:
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
 
+  tiny-emitter@2.1.0:
+    resolution: {integrity: sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==}
+
   tiny-lr@0.1.7:
     resolution: {integrity: sha512-QBjNXtM95Zjkwjn2SXaa6bPhASdd21Uvf8iZdzaqDEx1HgmPadXdcuH3H6jQzXenIhk3gGh6XA2Ao1WBps2/IA==}
 
@@ -3707,6 +3746,10 @@ packages:
   typed-array-length@1.0.7:
     resolution: {integrity: sha512-3KS2b+kL7fsuk/eJZ7EQdnEmQoaho/r6KUef7hxvltNA5DR8NAUM+8wJMbJyZ4G9/7i3v5zPBIMN5aybAh2/Jg==}
     engines: {node: '>= 0.4'}
+
+  typed-function@4.2.1:
+    resolution: {integrity: sha512-EGjWssW7Tsk4DGfE+5yluuljS1OGYWiI1J6e8puZz9nTMM51Oug8CD5Zo4gWMsOhq5BI+1bF+rWTm4Vbj3ivRA==}
+    engines: {node: '>= 18'}
 
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
@@ -3883,6 +3926,8 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@babel/runtime@7.28.4': {}
 
   '@emnapi/runtime@1.3.1':
     dependencies:
@@ -5118,6 +5163,8 @@ snapshots:
 
   commander@4.1.1: {}
 
+  complex.js@2.4.2: {}
+
   component-emitter@1.3.1: {}
 
   concat-map@0.0.1: {}
@@ -5238,6 +5285,8 @@ snapshots:
 
   decamelize@1.2.0:
     optional: true
+
+  decimal.js@10.6.0: {}
 
   decode-uri-component@0.2.2: {}
 
@@ -5531,6 +5580,8 @@ snapshots:
       es6-iterator: 2.0.3
       es6-symbol: 3.1.4
     optional: true
+
+  escape-latex@1.2.0: {}
 
   escape-string-regexp@1.0.5: {}
 
@@ -6012,6 +6063,8 @@ snapshots:
       mime-types: 2.1.35
     optional: true
 
+  fraction.js@5.3.4: {}
+
   fragment-cache@0.2.1:
     dependencies:
       map-cache: 0.2.2
@@ -6234,6 +6287,8 @@ snapshots:
   graceful-fs@4.2.11: {}
 
   graphemer@1.4.0: {}
+
+  gsap@3.13.0: {}
 
   gsp@0.5.4:
     dependencies:
@@ -6695,6 +6750,8 @@ snapshots:
   jasmine-core@2.99.1:
     optional: true
 
+  javascript-natural-sort@0.7.1: {}
+
   jiti@1.21.7: {}
 
   js-base64@2.6.4:
@@ -6910,6 +6967,18 @@ snapshots:
   math-intrinsics@1.1.0: {}
 
   math-random@1.0.4: {}
+
+  mathjs@15.1.0:
+    dependencies:
+      '@babel/runtime': 7.28.4
+      complex.js: 2.4.2
+      decimal.js: 10.6.0
+      escape-latex: 1.2.0
+      fraction.js: 5.3.4
+      javascript-natural-sort: 0.7.1
+      seedrandom: 3.0.5
+      tiny-emitter: 2.1.0
+      typed-function: 4.2.1
 
   media-typer@0.3.0: {}
 
@@ -7847,6 +7916,8 @@ snapshots:
       source-map: 0.4.4
     optional: true
 
+  seedrandom@3.0.5: {}
+
   semver@5.3.0:
     optional: true
 
@@ -8266,6 +8337,8 @@ snapshots:
   through@2.3.8:
     optional: true
 
+  tiny-emitter@2.1.0: {}
+
   tiny-lr@0.1.7:
     dependencies:
       body-parser: 1.8.4
@@ -8395,6 +8468,8 @@ snapshots:
       is-typed-array: 1.1.15
       possible-typed-array-names: 1.0.0
       reflect.getprototypeof: 1.0.10
+
+  typed-function@4.2.1: {}
 
   typedarray@0.0.6:
     optional: true

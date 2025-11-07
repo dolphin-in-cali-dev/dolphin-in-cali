@@ -131,3 +131,12 @@ body {
     );
   }
 }
+
+.gradual-blur {
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+
+.gradual-blur-inner {
+  pointer-events: none;
+}
