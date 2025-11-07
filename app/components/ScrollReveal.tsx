@@ -130,8 +130,10 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         if (node.type === 'br') {
           return [<br key="br" />];
         }
-        if (node.props && node.props.children) {
-          return processChildren(node.props.children);
+        // Use a type assertion on node to ensure props is not just {}:
+        const element = node as React.ReactElement<any, any>;
+        if (element.props && 'children' in element.props) {
+          return processChildren(element.props.children);
         }
       }
 
