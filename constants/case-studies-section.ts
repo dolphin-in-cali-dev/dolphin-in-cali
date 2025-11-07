@@ -41,7 +41,7 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: rooftopThumbnail,
     tags: ['AI', '3D Graphics', 'Dev & Design'],
     path: 'rooftop',
-    isFeatured: true,
+    isFeatured: false,
   },
   // {
   //   title: 'EDEN WOLRD',
@@ -55,7 +55,7 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: robotDiveThumbnail,
     tags: ['Web', 'Dev & Design'],
     path: 'https://www.allrobotai.com/',
-    isFeatured: false,
+    isFeatured: true,
   },
   // {
   //   title: '아트리어',
@@ -97,7 +97,7 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: cutpleThumbnail,
     tags: ['Web', 'Dev & Design'],
     path: 'https://www.cutple.com/',
-    isFeatured: false,
+    isFeatured: true,
   },
   {
     title: '제이엔디써키트(주)',
@@ -125,7 +125,7 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: sideIndexerThumbnail,
     tags: ['Web Extension', 'AI'],
     path: 'https://sideindexer.com/',
-    isFeatured: true,
+    isFeatured: false,
   }
 ];
 

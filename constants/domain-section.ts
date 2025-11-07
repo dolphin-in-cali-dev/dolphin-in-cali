@@ -1,6 +1,7 @@
 export type DomainCardInfo = {
   title: string;
   description: string;
+  thumbnail?: string;
 };
 
 export const domainCards: DomainCardInfo[] = [

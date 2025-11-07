@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
-
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
+import { useEffect, useRef, useState } from 'react';
 
 import AsteriskGraphic from './AsteriskGraphic';
 import ScrollReveal from './ScrollReveal';
@@ -177,9 +177,11 @@ const CatchPhraseSection = () => {
           </div>
           <div className="flex flex-col gap-y-4 sm:gap-y-6 lg:-ml-16 lg:gap-y-7">
             <div ref={imageRef} className="relative w-full" suppressHydrationWarning>
-              <img
+              <Image
                 src="/images/catchprise.svg"
                 alt="FULL IDEA ENJOY IMAGINATION WITH COMPANY, WE THINK WITH YOUR IDEA, WE DREAM"
+                width={800}
+                height={200}
                 className="w-full h-auto"
                 style={isMounted ? {
                   willChange: 'opacity, filter, transform',

@@ -1,11 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-
-import { caseStudyItems } from '@/constants/case-studies-section';
+import { useEffect } from 'react';
 
 import CaseStudyCard from '@/app/components/CaseStudyCard';
+import { caseStudyItems } from '@/constants/case-studies-section';
 
 const WorksPage = () => {
   const pathname = usePathname();
@@ -15,7 +14,7 @@ const WorksPage = () => {
     const scrollToTop = () => {
       // Lenis 인스턴스 찾기
       const lenisElement = document.querySelector('[data-lenis-root]');
-      // @ts-ignore
+      // @ts-expect-error - Lenis internal property
       const lenis = lenisElement?.__lenis || window.lenis;
       
       if (lenis) {

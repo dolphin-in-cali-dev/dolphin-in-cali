@@ -1,9 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useMemo, ReactNode, createElement, isValidElement } from 'react';
-
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { createElement, isValidElement, ReactNode, useEffect, useMemo, useRef } from 'react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +19,7 @@ interface ScrollRevealProps {
   as?: 'p' | 'h1' | 'h2' | 'h3' | 'div';
 }
 
+/* eslint-disable react/prop-types */
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   enableBlur = true,
@@ -131,7 +131,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
           return [<br key="br" />];
         }
         // Use a type assertion on node to ensure props is not just {}:
-        const element = node as React.ReactElement<any, any>;
+        const element = node as React.ReactElement<{ children?: ReactNode }, string>;
         if (element.props && 'children' in element.props) {
           return processChildren(element.props.children);
         }
@@ -241,6 +241,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     <span className={`scroll-reveal-text ${textClassName}`} suppressHydrationWarning>{splitText}</span>
   );
 };
+/* eslint-enable react/prop-types */
 
 export default ScrollReveal;
 

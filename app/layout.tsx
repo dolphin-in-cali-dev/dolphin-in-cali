@@ -9,7 +9,9 @@ import GlobalTabs from './components/GlobalTabs';
 // Lenis 인스턴스를 전역으로 관리
 declare global {
   interface Window {
-    lenis?: any;
+    lenis?: {
+      scrollTo: (target: number | string, options?: { immediate?: boolean }) => void;
+    };
   }
 }
 
