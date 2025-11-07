@@ -1,7 +1,9 @@
 'use client';
 
+import liquidGlass from '@assets/images/liquid-glass.png';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -44,13 +46,28 @@ const TitleAnimation = () => {
           </motion.div>
         </Link>
       </div>
+      
+      {/* liquid-glass.png 배경 이미지 - TitleGradient의 왼쪽 아래 모서리에 맞춤 */}
+      <div className="absolute bottom-0 left-0 z-40 hidden lg:block">
+        <div className="relative" style={{ width: '800px', height: '600px' }}>
+          <Image
+            src={liquidGlass}
+            alt="Liquid Glass"
+            fill
+            className="object-contain object-left-bottom"
+            priority
+          />
+        </div>
+      </div>
+
       {/* Main Text */}
-      <div className="absolute -bottom-2 left-0 z-50 flex flex-col gap-y-1.5 pb-4 pl-4 pr-6 pt-6 sm:pb-6 sm:pl-6 sm:pr-8 sm:pt-8 lg:bg-background lg:clip-wave lg:gap-y-3 lg:pb-0 lg:pl-0 lg:pr-12 lg:pt-10">
-        <span className="border-l-2 border-neutral-400 p-0.5 pl-1.5 text-[10px] text-slate-800 sm:pl-2 sm:text-xs lg:text-sm">
+      <div className="absolute -bottom-2 left-0 z-50 flex flex-col gap-y-1.5 pb-4 pl-4 pr-6 pt-6 sm:pb-6 sm:pl-6 sm:pr-8 sm:pt-8 lg:gap-y-3 lg:pb-0 lg:pl-0 lg:pr-12 lg:pt-5">
+        
+        <span className="border-l-2 border-white p-0.5 pl-1.5 text-[10px] text-white sm:pl-2 sm:text-xs lg:text-sm lg:ml-8 lg:pl-3">
           SOLUTION FOR YOU
         </span>
         
-        <h2 className="font-clash text-2xl font-bold leading-tight text-slate-800 sm:text-5xl lg:text-7xl">
+        <h2 className="font-plus-jakarta-sans text-2xl font-bold leading-tight text-white sm:text-4xl lg:text-6xl lg:pl-8 lg:pb-9">
           WEB APP
           <br />
           CREATIVE AGENCY
