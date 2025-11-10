@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       default: '돌핀인캘리',
     },
     description: 'WEB APP CREATIVE AGENCY',
-    images: '/images/og-image.png',
+    images: '/images/og-image-2.png',
   },
 };
 
