@@ -383,11 +383,10 @@ const ContactPage = () => {
                 )}
               </div>
 
-              <div className="flex gap-4">
-                <div className="w-24 shrink-0" />
+              <div className="mt-6 flex w-full justify-end">
                 <button
                   type="submit"
-                  className="mt-6 rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800"
+                  className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800"
                 >
                   문의하기
                 </button>
