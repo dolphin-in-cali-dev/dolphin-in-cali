@@ -93,13 +93,12 @@ const ContactPage = () => {
     let value = e.target.value.replace(/[^\d]/g, ''); // 숫자만 추출
     
     // 전화번호 포맷팅 (010-1234-5678)
-    if (value.length <= 3) {
-      value = value;
-    } else if (value.length <= 7) {
-      value = `${value.slice(0, 3)}-${value.slice(3)}`;
-    } else {
+    if (value.length > 7) {
       value = `${value.slice(0, 3)}-${value.slice(3, 7)}-${value.slice(7, 11)}`;
+    } else if (value.length > 3) {
+      value = `${value.slice(0, 3)}-${value.slice(3)}`;
     }
+    // value.length <= 3일 때는 그대로 유지
     
     setFormData((prev) => ({ ...prev, phone: value }));
     if (errors.phone) {
@@ -158,7 +157,7 @@ const ContactPage = () => {
   return (
     <main className="mx-auto min-h-screen w-full max-w-[1440px] px-6 pb-10 pt-10 sm:px-10">
       <div className="mb-12">
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-end justify-between gap-4">
           <div className="flex items-center gap-4">
             <Image
               src={logo}
@@ -175,26 +174,26 @@ const ContactPage = () => {
             href="/"
             className="group flex w-fit items-center gap-x-1 transition-colors duration-300 sm:gap-x-1.5"
           >
-            <span className="font-sans text-xl font-medium text-black transition-colors duration-300 group-hover:text-blue-600 sm:text-xl lg:text-2xl">
+            <span className="font-sans text-base font-medium text-black transition-colors duration-300 group-hover:text-blue-600 sm:text-lg lg:text-2xl">
               Go to Home
             </span>
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-transparent transition-colors duration-300 group-hover:bg-black sm:h-10 sm:w-10 lg:h-12 lg:w-12">
-              <ArrowUpRight className="h-4 w-4 transition-colors duration-300 group-hover:text-white sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
+            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-transparent transition-colors duration-300 group-hover:bg-black sm:h-10 sm:w-10 lg:h-12 lg:w-12">
+              <ArrowUpRight className="h-3 w-3 transition-colors duration-300 group-hover:text-white sm:h-5 sm:w-5 lg:h-6 lg:w-6" />
             </div>
           </Link>
         </div>
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {/* Contact Form */}
-        <div className="lg:col-span-2">
+        {/* Contact Form - 모바일에서 첫 번째로 표시 */}
+        <div className="order-1 lg:order-1 lg:col-span-2">
           <div className="rounded-2xl bg-white p-6 shadow-md sm:p-8">
             <form className="space-y-4" onSubmit={handleSubmit} noValidate>
               <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                   <label
                     htmlFor="name"
-                    className="w-24 shrink-0 text-sm font-semibold text-slate-700"
+                    className="w-full shrink-0 text-sm font-semibold text-slate-700 sm:w-24"
                   >
                     이름 *
                   </label>
@@ -214,17 +213,17 @@ const ContactPage = () => {
                 </div>
                 {errors.name && (
                   <div className="flex gap-4">
-                    <div className="w-24 shrink-0" />
+                    <div className="w-full shrink-0 sm:w-24" />
                     <p className="text-xs text-red-500">{errors.name}</p>
                   </div>
                 )}
               </div>
 
               <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                   <label
                     htmlFor="email"
-                    className="w-24 shrink-0 text-sm font-semibold text-slate-700"
+                    className="w-full shrink-0 text-sm font-semibold text-slate-700 sm:w-24"
                   >
                     이메일 *
                   </label>
@@ -244,16 +243,16 @@ const ContactPage = () => {
                 </div>
                 {errors.email && (
                   <div className="flex gap-4">
-                    <div className="w-24 shrink-0" />
+                    <div className="w-full shrink-0 sm:w-24" />
                     <p className="text-xs text-red-500">{errors.email}</p>
                   </div>
                 )}
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                 <label
                   htmlFor="phone"
-                  className="w-24 shrink-0 text-sm font-semibold text-slate-700"
+                  className="w-full shrink-0 text-sm font-semibold text-slate-700 sm:w-24"
                 >
                   연락처
                 </label>
@@ -270,11 +269,11 @@ const ContactPage = () => {
               </div>
 
               <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-4">
-                  <label className="w-24 shrink-0 text-sm font-semibold text-slate-700">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+                  <label className="w-full shrink-0 text-sm font-semibold text-slate-700 sm:w-24">
                     서비스 종류 *
                   </label>
-                  <div className="flex flex-1 items-center gap-6 sm:gap-8">
+                  <div className="flex flex-1 flex-wrap items-center gap-4 sm:gap-6 lg:gap-8">
                     <label className="flex cursor-pointer items-center gap-2 whitespace-nowrap">
                       <input
                         type="radio"
@@ -323,16 +322,16 @@ const ContactPage = () => {
                 </div>
                 {errors.service && (
                   <div className="flex gap-4">
-                    <div className="w-24 shrink-0" />
+                    <div className="w-full shrink-0 sm:w-24" />
                     <p className="text-xs text-red-500">{errors.service}</p>
                   </div>
                 )}
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
                 <label
                   htmlFor="timeline"
-                  className="w-24 shrink-0 text-sm font-semibold text-slate-700"
+                  className="w-full shrink-0 text-sm font-semibold text-slate-700 sm:w-24"
                 >
                   프로젝트 기간
                 </label>
@@ -354,10 +353,10 @@ const ContactPage = () => {
               </div>
 
               <div className="flex flex-col gap-1">
-                <div className="flex items-start gap-4">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-4">
                   <label
                     htmlFor="message"
-                    className="w-24 shrink-0 pt-2 text-sm font-semibold text-slate-700"
+                    className="w-full shrink-0 pt-2 text-sm font-semibold text-slate-700 sm:w-24"
                   >
                     문의 내용 *
                   </label>
@@ -377,7 +376,7 @@ const ContactPage = () => {
                 </div>
                 {errors.message && (
                   <div className="flex gap-4">
-                    <div className="w-24 shrink-0" />
+                    <div className="w-full shrink-0 sm:w-24" />
                     <p className="text-xs text-red-500">{errors.message}</p>
                   </div>
                 )}
@@ -395,10 +394,11 @@ const ContactPage = () => {
           </div>
         </div>
 
-        {/* Contact Information */}
-        <div className="lg:col-span-1 flex flex-col">
+        {/* Contact Information & Recent Inquiries - 모바일에서 두 번째와 세 번째로 표시, 데스크톱에서는 오른쪽 컬럼 */}
+        <div className="order-2 lg:order-2 lg:col-span-1 flex flex-col">
           <div className="flex flex-col gap-8 flex-1">
-            <div className="rounded-2xl bg-white p-6 shadow-md sm:p-8">
+            {/* Contact Information - 모바일에서 두 번째 */}
+            <div className="order-1 rounded-2xl bg-white p-6 shadow-md sm:p-8">
               <div className="space-y-6">
                 {/* 대표자 */}
                 <div className="flex items-start gap-4">
@@ -444,8 +444,8 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* 최근 문의 내용 카드 */}
-            <div className="rounded-2xl bg-white p-6 shadow-md sm:p-8 flex flex-col flex-1">
+            {/* 최근 문의 내용 카드 - 모바일에서 세 번째로 표시 */}
+            <div className="order-3 lg:order-2 rounded-2xl bg-white p-6 shadow-md sm:p-8 flex flex-col flex-1">
               <div className="relative w-full flex-1 overflow-hidden">
                 <div
                   className="flex h-full transition-transform duration-500 ease-in-out"
@@ -472,11 +472,11 @@ const ContactPage = () => {
                             {inquiry.date}
                           </span>
                         </div>
-                        <div>
+                        {/* <div>
                           <span className="inline-block rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700">
                             {inquiry.service}
                           </span>
-                        </div>
+                        </div> */}
                         <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed flex-1">
                           {inquiry.message}
                         </p>
