@@ -63,6 +63,8 @@ const ContactPage = () => {
     message: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -146,11 +148,55 @@ const ContactPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm()) {
-      // Form submission logic here
-      console.log('Form submitted:', formData);
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || '제출 중 오류가 발생했습니다.');
+      }
+
+      // 성공 시 폼 초기화
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: '',
+        timeline: '',
+        message: '',
+      });
+      setErrors({});
+      setSubmitStatus('success');
+
+      // 성공 메시지 3초 후 초기화
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
+    } catch (error) {
+      console.error('Submit error:', error);
+      setSubmitStatus('error');
+      setErrors({
+        submit: error instanceof Error ? error.message : '제출 중 오류가 발생했습니다.',
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -382,12 +428,19 @@ const ContactPage = () => {
                 )}
               </div>
 
-              <div className="mt-6 flex w-full justify-end">
+              <div className="mt-6 flex w-full flex-col items-end gap-2">
+                {submitStatus === 'success' && (
+                  <p className="text-sm text-green-600">문의가 성공적으로 제출되었습니다.</p>
+                )}
+                {errors.submit && (
+                  <p className="text-sm text-red-500">{errors.submit}</p>
+                )}
                 <button
                   type="submit"
-                  className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800"
+                  disabled={isSubmitting}
+                  className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  문의하기
+                  {isSubmitting ? '제출 중...' : '문의하기'}
                 </button>
               </div>
             </form>
