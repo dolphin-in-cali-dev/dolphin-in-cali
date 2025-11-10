@@ -1,6 +1,6 @@
 'use client';
 
-import liquidGlass from '@assets/images/liquid-glass-ww.webp';
+import liquidGlass from '@assets/images/liquid-glass.png';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
@@ -47,7 +47,7 @@ const TitleAnimation = () => {
       
       {/* liquid-glass.png 배경 이미지 - TitleGradient의 왼쪽 아래 모서리에 맞춤 */}
       <div className="absolute bottom-0 left-0 z-40">
-        <div className="relative w-[400px] h-[300px] sm:w-[600px] sm:h-[450px] lg:w-[800px] lg:h-[600px]">
+        <div className="relative w-[400px] h-[300px] sm:w-[600px] sm:h-[450px] lg:w-[1200px] lg:h-[600px]">
           <Image
             src={liquidGlass}
             alt="Liquid Glass"
