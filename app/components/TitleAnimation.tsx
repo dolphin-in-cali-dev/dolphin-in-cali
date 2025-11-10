@@ -25,7 +25,7 @@ const TitleAnimation = () => {
       <div className="absolute right-4 top-6 z-50 sm:right-6 lg:right-8">
         <Link
           className="flex w-fit items-center gap-x-1.5 rounded-full border border-black bg-black px-2 py-1 text-[14px] text-white transition-all duration-300 hover:bg-black hover:text-white sm:gap-x-2 sm:px-5 sm:py-2.5 sm:text-xs lg:px-6 lg:py-3 lg:text-sm"
-          href={`mailto:${CS_EMAIL}`}
+          href="/contact"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >

@@ -12,7 +12,13 @@ import { cn } from '@/lib/utils';
 const GlobalTabs = () => {
   const pathname = usePathname();
   const isRooftop = pathname.split('/')?.[1] === 'rooftop';
+  const isContact = pathname === '/contact';
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Contact 페이지에서는 헤더 숨기기
+  if (isContact) {
+    return null;
+  }
 
   const tabs = [
     { href: '/', label: 'HOME' },

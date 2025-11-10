@@ -100,7 +100,7 @@ export const caseStudyItems: CaseStudyInfo[] = [
     isFeatured: true,
   },
   {
-    title: '제이엔디써키트(주)',
+    title: '제이엔디써키트',
     thumbnail: jndThumbnail,
     tags: ['Web', 'Dev & Design'],
     path: 'https://www.jndcircuit.co.kr/',
@@ -130,4 +130,4 @@ export const caseStudyItems: CaseStudyInfo[] = [
 ];
 
 
-  // 사이드인덱서, axionppt
+  // axionppt, HAMO
