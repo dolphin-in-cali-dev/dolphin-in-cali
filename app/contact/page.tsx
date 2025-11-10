@@ -1,59 +1,47 @@
 'use client';
 
 import logo from '@assets/images/logo-black.svg';
-import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import { CS_EMAIL } from '@/constants/basic';
+import { supabase } from '@/lib/supabase';
 
-// 더미 문의 데이터 (개인정보 일부 숨김)
-const recentInquiries = [
-  {
-    id: 1,
-    name: '김*수',
-    email: 'kim***@email.com',
-    service: '웹',
-    message: '이커머스 플랫폼 개발 문의드립니다. 기존 쇼핑몰을 리뉴얼하고 싶어요.',
-    date: '2024-01-15',
-  },
-  {
-    id: 2,
-    name: '이*희',
-    email: 'lee***@gmail.com',
-    service: '앱',
-    message: '모바일 앱 UI/UX 디자인 및 개발이 필요합니다. 사용자 경험을 중시하고 싶어요.',
-    date: '2024-01-14',
-  },
-  {
-    id: 3,
-    name: '박*수',
-    email: 'park***@company.com',
-    service: '웹',
-    message: '기업용 대시보드 시스템 구축을 원합니다. 실시간 데이터 시각화가 필요해요.',
-    date: '2024-01-13',
-  },
-  {
-    id: 4,
-    name: '최*은',
-    email: 'choi***@startup.io',
-    service: '그래픽디자인',
-    message: '소셜 네트워킹 앱 개발 프로젝트입니다. 브랜드 아이덴티티 디자인도 함께 진행하고 싶습니다.',
-    date: '2024-01-12',
-  },
-  {
-    id: 5,
-    name: '정*현',
-    email: 'jung***@business.co.kr',
-    service: '웹',
-    message: '온라인 쇼핑몰 리뉴얼 프로젝트 문의드립니다. 반응형 디자인이 중요합니다.',
-    date: '2024-01-11',
-  },
-];
+interface RecentInquiry {
+  id: number;
+  name: string;
+  email: string;
+  service: string;
+  message: string;
+  date: string;
+}
+
+// 서비스 타입 매핑
+const serviceMap: Record<string, string> = {
+  web: '웹',
+  app: '앱',
+  design: '그래픽디자인',
+  discuss: '협의후 결정',
+};
+
+// 개인정보 마스킹 함수
+const maskName = (name: string): string => {
+  if (name.length <= 2) return `${name[0]}*`;
+  return `${name[0]}${'*'.repeat(name.length - 2)}${name[name.length - 1]}`;
+};
+
+const maskEmail = (email: string): string => {
+  const [localPart, domain] = email.split('@');
+  if (!domain) return email;
+  if (localPart.length <= 3) return `${localPart[0]}***@${domain}`;
+  return `${localPart.slice(0, 3)}***@${domain}`;
+};
 
 const ContactPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [recentInquiries, setRecentInquiries] = useState<RecentInquiry[]>([]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -66,13 +54,50 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  // DB에서 최근 문의 내역 가져오기
   useEffect(() => {
+    const fetchRecentInquiries = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('contacts')
+          .select('id, name, email, service, message, created_at')
+          .order('created_at', { ascending: false })
+          .limit(10);
+
+        if (error) {
+          console.error('Error fetching recent inquiries:', error);
+          return;
+        }
+
+        if (data) {
+          const formattedData: RecentInquiry[] = data.map((item) => ({
+            id: item.id,
+            name: maskName(item.name),
+            email: maskEmail(item.email),
+            service: serviceMap[item.service] || item.service,
+            message: item.message,
+            date: new Date(item.created_at).toISOString().split('T')[0],
+          }));
+          setRecentInquiries(formattedData);
+        }
+      } catch (error) {
+        console.error('Error fetching recent inquiries:', error);
+      }
+    };
+
+    fetchRecentInquiries();
+  }, []);
+
+  // 캐러셀 자동 슬라이드
+  useEffect(() => {
+    if (recentInquiries.length === 0) return;
+    
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % recentInquiries.length);
     }, 3000); // 3초마다 자동 슬라이드
 
     return () => clearInterval(interval);
-  }, []);
+  }, [recentInquiries.length]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -185,6 +210,26 @@ const ContactPage = () => {
       setErrors({});
       setSubmitStatus('success');
 
+      // 최근 문의 내역 새로고침
+      const { data: newData, error: fetchError } = await supabase
+        .from('contacts')
+        .select('id, name, email, service, message, created_at')
+        .order('created_at', { ascending: false })
+        .limit(10);
+
+      if (!fetchError && newData) {
+        const formattedData: RecentInquiry[] = newData.map((item) => ({
+          id: item.id,
+          name: maskName(item.name),
+          email: maskEmail(item.email),
+          service: serviceMap[item.service] || item.service,
+          message: item.message,
+          date: new Date(item.created_at).toISOString().split('T')[0],
+        }));
+        setRecentInquiries(formattedData);
+        setCurrentIndex(0); // 새 데이터로 인덱스 리셋
+      }
+
       // 성공 메시지 3초 후 초기화
       setTimeout(() => {
         setSubmitStatus('idle');
@@ -233,7 +278,7 @@ const ContactPage = () => {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         {/* Contact Form - 모바일에서 첫 번째로 표시 */}
         <div className="order-1 lg:order-1 lg:col-span-2">
-          <div className="rounded-2xl bg-white p-6 shadow-md sm:p-8">
+          <div className="rounded-2xl bg-white p-6 shadow-sm sm:p-8">
             <form className="space-y-4" onSubmit={handleSubmit} noValidate>
               <div className="flex flex-col gap-1">
                 <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
@@ -430,7 +475,7 @@ const ContactPage = () => {
 
               <div className="mt-6 flex w-full flex-col items-end gap-2">
                 {submitStatus === 'success' && (
-                  <p className="text-sm text-green-600">문의가 성공적으로 제출되었습니다.</p>
+                  <p className="text-sm text-green-600">문의가 성공적으로 접수되었습니다. 최대한 빠르게 회신드리겠습니다 😁</p>
                 )}
                 {errors.submit && (
                   <p className="text-sm text-red-500">{errors.submit}</p>
@@ -451,22 +496,32 @@ const ContactPage = () => {
         <div className="order-2 lg:order-2 lg:col-span-1 flex flex-col">
           <div className="flex flex-col gap-8 flex-1">
             {/* Contact Information - 모바일에서 두 번째 */}
-            <div className="order-1 rounded-2xl bg-white p-6 shadow-md sm:p-8">
+            <div className="order-1 rounded-2xl bg-white p-6 shadow-sm sm:p-8">
               <div className="space-y-6">
                 {/* 대표자 */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900">
-                    <MapPin className="h-6 w-6 text-white" />
+                  <div className="flex h-7 w-7 shrink-0 items-start justify-start pt-0.5">
+                    <Image
+                      src="/images/favicon.ico"
+                      alt="Favicon"
+                      width={24}
+                      height={24}
+                      className="h-7 w-7"
+                    />
                   </div>
                   <div>
                     <h3 className="mb-1 font-semibold text-slate-900">대표자</h3>
                     <p className="text-slate-700">변진영</p>
                   </div>
                 </div>
+                {/* Divider */}
+                <div className="mx-auto w-48 border-t border-slate-200"></div>
                 {/* 전화번호 */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900">
-                    <Phone className="h-6 w-6 text-white" />
+                  <div className="flex h-7 w-7 shrink-0 items-start justify-start pt-0.5">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900">
+                      <Phone className="h-3 w-3 text-white" />
+                    </div>
                   </div>
                   <div>
                     <h3 className="mb-1 font-semibold text-slate-900">전화번호</h3>
@@ -478,14 +533,17 @@ const ContactPage = () => {
                     </a>
                   </div>
                 </div>
-
+                {/* Divider */}
+                <div className="mx-auto w-48 border-t border-slate-200"></div>
                 {/* Email */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900">
-                    <Mail className="h-6 w-6 text-white" />
+                  <div className="flex h-7 w-7 shrink-0 items-start justify-start pt-0.5">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-900">
+                      <Mail className="h-3 w-3 text-white" />
+                    </div>
                   </div>
                   <div>
-                    <h3 className="mb-1 font-semibold text-slate-900">Email</h3>
+                    <h3 className="mb-1 font-semibold text-slate-900">이메일</h3>
                     <a
                       href={`mailto:${CS_EMAIL}`}
                       className="text-slate-700 hover:text-slate-900 transition-colors"
@@ -498,15 +556,16 @@ const ContactPage = () => {
             </div>
 
             {/* 최근 문의 내용 카드 - 모바일에서 세 번째로 표시 */}
-            <div className="order-3 lg:order-2 rounded-2xl bg-white p-6 shadow-md sm:p-8 flex flex-col flex-1">
+            <div className="order-3 lg:order-2 rounded-2xl p-6 sm:p-8 flex flex-col flex-1">
               <div className="relative w-full flex-1 overflow-hidden">
-                <div
-                  className="flex h-full transition-transform duration-500 ease-in-out"
-                  style={{
-                    transform: `translateX(-${currentIndex * 100}%)`,
-                  }}
-                >
-                  {recentInquiries.map((inquiry) => (
+                {recentInquiries.length > 0 ? (
+                  <div
+                    className="flex h-full transition-transform duration-500 ease-in-out"
+                    style={{
+                      transform: `translateX(-${currentIndex * 100}%)`,
+                    }}
+                  >
+                    {recentInquiries.map((inquiry) => (
                     <div
                       key={inquiry.id}
                       className="w-full shrink-0"
@@ -535,12 +594,17 @@ const ContactPage = () => {
                         </p>
                       </div>
                     </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex h-full items-center justify-center">
+                    <p className="text-sm text-slate-400">최근 문의 내역을 불러오는 중 입니다.</p>
+                  </div>
+                )}
               </div>
               {/* 인디케이터 */}
-              <div className="mt-6 flex justify-center gap-2 shrink-0">
-                {recentInquiries.map((_, index) => (
+              {/* <div className="mt-6 flex justify-center gap-2 shrink-0">
+                {recentInquiries.length > 0 && recentInquiries.map((_, index) => (
                   <div
                     key={index}
                     className={`h-1 rounded-full transition-all duration-300 ${
@@ -550,7 +614,7 @@ const ContactPage = () => {
                     }`}
                   />
                 ))}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

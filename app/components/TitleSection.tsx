@@ -48,7 +48,7 @@ const TitleSection = () => {
   return (
     <div 
       ref={containerRef}
-      className="mx-auto flex max-w-[1440px] flex-col gap-y-4 px-6 pb-6 sm:gap-y-5 sm:px-10 sm:pb-5 lg:gap-y-6 lg:pb-6" 
+      className="mx-auto flex w-full flex-col gap-y-4 px-6 pb-6 sm:gap-y-5 sm:px-10 sm:pb-5 lg:gap-y-6 lg:pb-6" 
       style={{ minHeight: '100vh' }}
     >
       <div className="flex flex-col gap-y-4 sm:gap-y-5 lg:gap-y-6">
