@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import Footer from '@/app/components/Footer';
 import { CS_EMAIL } from '@/constants/basic';
 import { supabase } from '@/lib/supabase';
 
@@ -246,7 +247,8 @@ const ContactPage = () => {
   };
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-[1440px] px-6 pb-10 pt-10 sm:px-10">
+    <>
+      <main className="mx-auto min-h-screen w-full max-w-[1440px] px-6 pb-10 pt-10 sm:px-10">
       <div className="mb-12">
         <div className="flex items-end justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -493,11 +495,72 @@ const ContactPage = () => {
         </div>
 
         {/* Contact Information & Recent Inquiries - 모바일에서 두 번째와 세 번째로 표시, 데스크톱에서는 오른쪽 컬럼 */}
-        <div className="order-2 lg:order-2 lg:col-span-1 flex flex-col">
-          <div className="flex flex-col gap-8 flex-1">
+        <div className="order-1 lg:order-2 lg:col-span-1 flex flex-col">
+          <div className="flex flex-col flex-1">
+            {/* 최근 문의 내용 카드 - 모바일에서 세 번째로 표시 */}
+            <div className="order-1 lg:order-2 rounded-2xl p-6 sm:p-8 flex flex-col flex-1">
+              <div className="relative w-full flex-1 overflow-hidden">
+                {recentInquiries.length > 0 ? (
+                  <div
+                    className="flex h-full transition-transform duration-500 ease-in-out"
+                    style={{
+                      transform: `translateX(-${currentIndex * 100}%)`,
+                    }}
+                  >
+                    {recentInquiries.map((inquiry) => (
+                    <div
+                      key={inquiry.id}
+                      className="w-full shrink-0"
+                    >
+                      <div className="space-y-3 pr-2 h-full flex flex-col">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-semibold text-slate-900">
+                              {inquiry.name}
+                            </p>
+                            <p className="text-xs text-slate-500 break-all">
+                              {inquiry.email}
+                            </p>
+                          </div>
+                          <span className="text-xs text-slate-400 shrink-0 whitespace-nowrap">
+                            {inquiry.date}
+                          </span>
+                        </div>
+                        {/* <div>
+                          <span className="inline-block rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700">
+                            {inquiry.service}
+                          </span>
+                        </div> */}
+                        <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed flex-1">
+                          {inquiry.message}
+                        </p>
+                      </div>
+                    </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex h-full items-center justify-center">
+                    <p className="text-sm text-slate-400">최근 문의 내역을 불러오는 중 입니다.</p>
+                  </div>
+                )}
+              </div>
+              {/* 인디케이터 */}
+              <div className="mt-4 flex justify-center gap-2 shrink-0">
+                {recentInquiries.length > 0 && recentInquiries.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      index === currentIndex
+                        ? 'w-8 bg-slate-900'
+                        : 'w-1 bg-slate-300'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
             {/* Contact Information - 모바일에서 두 번째 */}
-            <div className="order-1 rounded-2xl bg-white p-6 shadow-sm sm:p-8">
-              <div className="space-y-6">
+            <div className="order-2 rounded-2xl bg-white p-6 shadow-sm sm:p-8">
+              <div className="space-y-4">
                 {/* 대표자 */}
                 <div className="flex items-start gap-4">
                   <div className="flex h-7 w-7 shrink-0 items-start justify-start pt-0.5">
@@ -554,72 +617,12 @@ const ContactPage = () => {
                 </div>
               </div>
             </div>
-
-            {/* 최근 문의 내용 카드 - 모바일에서 세 번째로 표시 */}
-            <div className="order-3 lg:order-2 rounded-2xl p-6 sm:p-8 flex flex-col flex-1">
-              <div className="relative w-full flex-1 overflow-hidden">
-                {recentInquiries.length > 0 ? (
-                  <div
-                    className="flex h-full transition-transform duration-500 ease-in-out"
-                    style={{
-                      transform: `translateX(-${currentIndex * 100}%)`,
-                    }}
-                  >
-                    {recentInquiries.map((inquiry) => (
-                    <div
-                      key={inquiry.id}
-                      className="w-full shrink-0"
-                    >
-                      <div className="space-y-3 pr-2 h-full flex flex-col">
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-slate-900">
-                              {inquiry.name}
-                            </p>
-                            <p className="text-xs text-slate-500 break-all">
-                              {inquiry.email}
-                            </p>
-                          </div>
-                          <span className="text-xs text-slate-400 shrink-0 whitespace-nowrap">
-                            {inquiry.date}
-                          </span>
-                        </div>
-                        {/* <div>
-                          <span className="inline-block rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-700">
-                            {inquiry.service}
-                          </span>
-                        </div> */}
-                        <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed flex-1">
-                          {inquiry.message}
-                        </p>
-                      </div>
-                    </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="flex h-full items-center justify-center">
-                    <p className="text-sm text-slate-400">최근 문의 내역을 불러오는 중 입니다.</p>
-                  </div>
-                )}
-              </div>
-              {/* 인디케이터 */}
-              {/* <div className="mt-6 flex justify-center gap-2 shrink-0">
-                {recentInquiries.length > 0 && recentInquiries.map((_, index) => (
-                  <div
-                    key={index}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? 'w-8 bg-slate-900'
-                        : 'w-1 bg-slate-300'
-                    }`}
-                  />
-                ))}
-              </div> */}
-            </div>
           </div>
         </div>
       </div>
     </main>
+    <Footer />
+    </>
   );
 };
 
