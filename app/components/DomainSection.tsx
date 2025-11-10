@@ -9,7 +9,7 @@ import DomainCarousel from './DomainCarousel';
 const DomainSection = () => {
   return (
     <div>
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-y-8 px-6 pb-12 pt-8 sm:gap-y-10 sm:px-10 sm:pb-16 sm:pt-10 lg:gap-y-14 lg:pb-24 lg:pt-12">
+      <div className="mx-auto flex w-full flex-col gap-y-8 px-6 pb-12 pt-8 sm:gap-y-10 sm:px-10 sm:pb-16 sm:pt-10 lg:gap-y-14 lg:pb-24 lg:pt-12">
         <div className="flex items-center justify-between gap-x-3 sm:gap-x-4">
           <h3 className="font-clash text-2xl font-medium text-neutral-800 sm:text-4xl lg:text-6xl">.What we do</h3>
           <Link

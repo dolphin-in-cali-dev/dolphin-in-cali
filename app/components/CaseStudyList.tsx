@@ -18,7 +18,7 @@ const CaseStudyList = () => {
     .slice(0, 8);
 
   return (
-    <div ref={containerRef} className="relative w-full sm:px-6">
+    <div ref={containerRef} className="relative w-full">
       <div ref={ref} className="relative grid grid-cols-1 pt-0 gap-6 sm:pt-4 sm:grid-cols-2 sm:gap-10 lg:pt-8 lg:grid-cols-3 lg:gap-4">
         {featuredItems.map((item, index) => (
           <motion.div

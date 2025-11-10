@@ -5,7 +5,7 @@ import { supabase } from '@/lib/supabase';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, service, timeline, message } = body;
+    const { name, email, phone, service, timeline, message, isPrivate } = body;
 
     // 필수 필드 검증
     if (!name || !email || !service || !message) {
@@ -35,6 +35,7 @@ export async function POST(request: Request) {
           service,
           timeline: timeline || null,
           message,
+          is_private: isPrivate !== undefined ? isPrivate : true, // 기본값은 비공개
           created_at: new Date().toISOString(),
         },
       ])

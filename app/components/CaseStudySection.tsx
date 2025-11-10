@@ -10,8 +10,22 @@ import GradualBlur from './GradualBlur';
 
 const CaseStudySection = () => {
   const [isFixed, setIsFixed] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,14 +53,19 @@ const CaseStudySection = () => {
 
   return (
     <div ref={sectionRef} className="relative">
-      <div className="mx-auto max-w-[1440px] pb-8 sm:pb-24 lg:pb-16 ">
+      <div className="mx-auto w-full pb-8 sm:pb-24 lg:pb-16 ">
         <div
           ref={headerRef}
           className={`pb-2 pt-4 transition-all duration-500 ease-out sm:pb-4 lg:pb-5 ${isFixed
               ? 'fixed left-0 right-0 top-0 z-[200]'
               : 'relative z-40 bg-background'
             }`}
-          style={isFixed ? { maxWidth: '1440px', margin: '0 auto', paddingLeft: '1.5rem', paddingRight: '1.5rem' } : {}}
+          style={isFixed ? { 
+            maxWidth: '1440px', 
+            margin: '0 auto', 
+            paddingLeft: windowWidth >= 640 ? '2.5rem' : '1.5rem', 
+            paddingRight: windowWidth >= 640 ? '2.5rem' : '1.5rem' 
+          } : {}}
         >
           <GradualBlur
             target={isFixed ? "page" : "parent"}
@@ -59,7 +78,7 @@ const CaseStudySection = () => {
             opacity={1}
             zIndex={10}
           />
-          <div className="flex items-center justify-end gap-x-3 px-6 sm:gap-x-4 relative z-[201]">
+          <div className="flex items-center justify-end gap-x-3 px-6 sm:px-10 sm:gap-x-4 relative z-[201]">
             <Link
               className="group flex w-fit items-center gap-x-1 transition-colors duration-300 sm:gap-x-1.5"
               href="/works"
@@ -77,7 +96,7 @@ const CaseStudySection = () => {
           
         {/* Spacer when fixed */}
         {isFixed && <div className="h-[60px] sm:h-[80px] lg:h-[100px]" />}
-        <div className="mt-8 px-6 space-y-6 sm:mt-10 sm:space-y-16 lg:mt-8 lg:space-y-12">
+        <div className="mt-8 px-6 sm:px-10 space-y-6 sm:mt-10 sm:space-y-16 lg:mt-8 lg:space-y-12">
           <CaseStudyList />
           <Marquee autoFill className="py-1 sm:py-8">
             <span className="ml-20 text-xl font-medium font-clash sm:ml-32 sm:text-2xl lg:text-3xl">

@@ -43,6 +43,7 @@ const maskEmail = (email: string): string => {
 const ContactPage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [recentInquiries, setRecentInquiries] = useState<RecentInquiry[]>([]);
+  const [isLoadingInquiries, setIsLoadingInquiries] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -50,6 +51,7 @@ const ContactPage = () => {
     service: '',
     timeline: '',
     message: '',
+    isPrivate: false, // 기본값은 공개
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,15 +60,18 @@ const ContactPage = () => {
   // DB에서 최근 문의 내역 가져오기
   useEffect(() => {
     const fetchRecentInquiries = async () => {
+      setIsLoadingInquiries(true);
       try {
         const { data, error } = await supabase
           .from('contacts')
           .select('id, name, email, service, message, created_at')
+          .eq('isPrivate', false)
           .order('created_at', { ascending: false })
           .limit(10);
 
         if (error) {
           console.error('Error fetching recent inquiries:', error);
+          setIsLoadingInquiries(false);
           return;
         }
 
@@ -81,8 +86,10 @@ const ContactPage = () => {
           }));
           setRecentInquiries(formattedData);
         }
+        setIsLoadingInquiries(false);
       } catch (error) {
         console.error('Error fetching recent inquiries:', error);
+        setIsLoadingInquiries(false);
       }
     };
 
@@ -105,8 +112,15 @@ const ContactPage = () => {
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    
+    if (type === 'checkbox') {
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
+    
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => {
@@ -207,6 +221,7 @@ const ContactPage = () => {
         service: '',
         timeline: '',
         message: '',
+        isPrivate: true,
       });
       setErrors({});
       setSubmitStatus('success');
@@ -215,6 +230,7 @@ const ContactPage = () => {
       const { data: newData, error: fetchError } = await supabase
         .from('contacts')
         .select('id, name, email, service, message, created_at')
+        .eq('is_private', false)
         .order('created_at', { ascending: false })
         .limit(10);
 
@@ -231,10 +247,7 @@ const ContactPage = () => {
         setCurrentIndex(0); // 새 데이터로 인덱스 리셋
       }
 
-      // 성공 메시지 3초 후 초기화
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
+      // 성공 메시지는 계속 유지 (사용자가 폼을 다시 제출하거나 페이지를 새로고침할 때까지)
     } catch (error) {
       console.error('Submit error:', error);
       setSubmitStatus('error');
@@ -248,7 +261,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <main className="mx-auto min-h-screen w-full max-w-[1440px] px-6 pb-10 pt-10 sm:px-10">
+      <main className="mx-auto min-h-screen w-full px-6 pb-10 pt-10 sm:px-10">
       <div className="mb-12">
         <div className="flex items-end justify-between gap-4">
           <div className="flex items-center gap-4">
@@ -482,13 +495,27 @@ const ContactPage = () => {
                 {errors.submit && (
                   <p className="text-sm text-red-500">{errors.submit}</p>
                 )}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  {isSubmitting ? '제출 중...' : '문의하기'}
-                </button>
+                <div className="flex w-full items-center justify-end gap-6">
+                  <label className="flex cursor-pointer items-center gap-2 whitespace-nowrap">
+                    <input
+                      type="checkbox"
+                      name="isPrivate"
+                      checked={formData.isPrivate}
+                      onChange={(e) => {
+                        setFormData((prev) => ({ ...prev, isPrivate: !e.target.checked }));
+                      }}
+                      className="h-4 w-4 shrink-0 cursor-pointer border-slate-300 text-blue-600 accent-blue-600 focus:ring-blue-600 focus:ring-offset-0"
+                    />
+                    <span className="text-sm text-slate-700">비공개</span>
+                  </label>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="rounded-lg bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    {isSubmitting ? '제출 중...' : '문의하기'}
+                  </button>
+                </div>
               </div>
             </form>
           </div>
@@ -500,7 +527,11 @@ const ContactPage = () => {
             {/* 최근 문의 내용 카드 - 모바일에서 세 번째로 표시 */}
             <div className="order-1 lg:order-2 rounded-2xl p-6 sm:p-8 flex flex-col flex-1">
               <div className="relative w-full flex-1 overflow-hidden">
-                {recentInquiries.length > 0 ? (
+                {isLoadingInquiries ? (
+                  <div className="flex h-full items-center justify-center">
+                    <p className="text-sm text-slate-400">최근 문의 내역을 불러오는 중 입니다.</p>
+                  </div>
+                ) : recentInquiries.length > 0 ? (
                   <div
                     className="flex h-full transition-transform duration-500 ease-in-out"
                     style={{

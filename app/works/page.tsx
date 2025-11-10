@@ -44,7 +44,7 @@ const WorksPage = () => {
   }, [pathname]);
 
   return (
-    <main className="mx-auto min-h-screen w-full max-w-[1440px] px-6 pb-20 pt-10 sm:px-10">
+    <main className="mx-auto min-h-screen w-full px-6 pb-20 pt-10 sm:px-10">
       <div className="mb-12">
         <h1 className="text-5xl font-bold text-slate-900 sm:text-6xl lg:text-7xl">
           OUR WORKS.

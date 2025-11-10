@@ -36,7 +36,7 @@ const GlobalTabs = () => {
 
   return (
     <div className={isRooftop ? 'bg-black' : 'bg-transparent'}>
-      <header className="mx-auto flex w-full max-w-[1440px] items-center justify-between px-6 sm:px-10">
+      <header className="mx-auto flex w-full px-6 items-center justify-between sm:px-10">
         {/* Left Side - Logo & Title */}
         <Link href="/" className="flex items-center gap-x-2 rounded-b-lg px-2 pb-2 pt-4 sm:gap-x-3">
           <Image
