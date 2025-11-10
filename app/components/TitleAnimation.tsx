@@ -1,6 +1,6 @@
 'use client';
 
-import liquidGlass from '@assets/images/liquid-glass.png';
+import liquidGlass from '@assets/images/liquid-glass-ww.webp';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
