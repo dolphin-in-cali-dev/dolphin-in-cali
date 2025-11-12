@@ -94,6 +94,13 @@ export const caseStudyItems: CaseStudyInfo[] = [
     isFeatured: true,
   },
   {
+    title: '돌핀인캘리 AI',
+    thumbnail: dolphinAIThumbnail,
+    tags: ['Web', 'AI'],
+    path: 'https://www.dolphin-in-cali-ai.com/',
+    isFeatured: false,
+  },
+  {
     title: '픽포',
     thumbnail: pickForThumbnail,
     tags: ['App', 'Dev & Design'],
@@ -119,13 +126,6 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: hiKThumbnail,
     tags: ['Web', 'Dev & Design'],
     path: 'https://www.hik.co.kr/',
-    isFeatured: false,
-  },
-  {
-    title: '돌핀인캘리 AI',
-    thumbnail: dolphinAIThumbnail,
-    tags: ['Web', 'AI'],
-    path: 'https://www.dolphin-in-cali-ai.com/',
     isFeatured: false,
   }
 ];

@@ -25,13 +25,13 @@ const CaseStudyCard = ({ content }: CaseStudyCardProps) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl">
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl sm:rounded-3xl">
           <Image
             src={content.thumbnail}
             alt={content.title}
-            className="aspect-video w-full rounded-2xl sm:rounded-3xl"
+            className="h-full w-full rounded-2xl object-cover sm:rounded-3xl"
             width={400}
-            height={400}
+            height={225}
             quality={100}
           />
           
