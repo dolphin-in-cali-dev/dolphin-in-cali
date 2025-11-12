@@ -35,7 +35,7 @@ export async function POST(request: Request) {
           service,
           timeline: timeline || null,
           message,
-          is_private: isPrivate !== undefined ? isPrivate : true, // 기본값은 비공개
+          'isPrivate': isPrivate !== undefined ? isPrivate : false, // 기본값은 공개 (false = 공개, true = 비공개)
           created_at: new Date().toISOString(),
         },
       ])

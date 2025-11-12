@@ -221,7 +221,7 @@ const ContactPage = () => {
         service: '',
         timeline: '',
         message: '',
-        isPrivate: true,
+        isPrivate: false,
       });
       setErrors({});
       setSubmitStatus('success');
@@ -230,7 +230,7 @@ const ContactPage = () => {
       const { data: newData, error: fetchError } = await supabase
         .from('contacts')
         .select('id, name, email, service, message, created_at')
-        .eq('is_private', false)
+        .eq('isPrivate', false)
         .order('created_at', { ascending: false })
         .limit(10);
 
@@ -502,9 +502,7 @@ const ContactPage = () => {
                       type="checkbox"
                       name="isPrivate"
                       checked={formData.isPrivate}
-                      onChange={(e) => {
-                        setFormData((prev) => ({ ...prev, isPrivate: !e.target.checked }));
-                      }}
+                      onChange={handleChange}
                       className="h-4 w-4 shrink-0 cursor-pointer border-slate-300 text-blue-600 accent-blue-600 focus:ring-blue-600 focus:ring-offset-0"
                     />
                     <span className="text-sm text-slate-700">비공개</span>

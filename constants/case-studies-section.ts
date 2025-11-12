@@ -78,13 +78,13 @@ export const caseStudyItems: CaseStudyInfo[] = [
     path: 'https://www.euratchacha24.com/',
     isFeatured: true,
   },
-  {
-    title: '노아인테리어',
-    thumbnail: noaThumbnail,
-    tags: ['Web', 'Dev & Design'],
-    path: 'https://noahint.imweb.me/',
-    isFeatured: false,
-  },
+  // {
+  //   title: '노아인테리어',
+  //   thumbnail: noaThumbnail,
+  //   tags: ['Web', 'Dev & Design'],
+  //   path: 'https://noahint.imweb.me/',
+  //   isFeatured: false,
+  // },
 
   {
     title: '제이엔디써키트',
