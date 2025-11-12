@@ -29,20 +29,6 @@ export const caseStudyItems: CaseStudyInfo[] = [
   //   path: 'case-study/s2d-lab',
   //   isFeatured: false,
   // },
-  {
-    title: '픽포',
-    thumbnail: pickForThumbnail,
-    tags: ['App', 'Dev & Design'],
-    path: 'case-study/pickfor',
-    isFeatured: true,
-  },
-  {
-    title: 'Rooftop Project',
-    thumbnail: rooftopThumbnail,
-    tags: ['AI', '3D Graphics', 'Dev & Design'],
-    path: 'rooftop',
-    isFeatured: false,
-  },
   // {
   //   title: 'EDEN WOLRD',
   //   thumbnail: 'https://picsum.photos/404',
@@ -55,6 +41,13 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: robotDiveThumbnail,
     tags: ['Web', 'Dev & Design'],
     path: 'https://www.allrobotai.com/',
+    isFeatured: true,
+  },  
+  {
+    title: '컷플',
+    thumbnail: cutpleThumbnail,
+    tags: ['Web', 'Dev & Design'],
+    path: 'https://www.cutple.com/',
     isFeatured: true,
   },
   // {
@@ -92,13 +85,7 @@ export const caseStudyItems: CaseStudyInfo[] = [
     path: 'https://noahint.imweb.me/',
     isFeatured: false,
   },
-  {
-    title: '컷플',
-    thumbnail: cutpleThumbnail,
-    tags: ['Web', 'Dev & Design'],
-    path: 'https://www.cutple.com/',
-    isFeatured: true,
-  },
+
   {
     title: '제이엔디써키트',
     thumbnail: jndThumbnail,
@@ -107,7 +94,28 @@ export const caseStudyItems: CaseStudyInfo[] = [
     isFeatured: true,
   },
   {
-    title: 'Hi-K',
+    title: '픽포',
+    thumbnail: pickForThumbnail,
+    tags: ['App', 'Dev & Design'],
+    path: 'case-study/pickfor',
+    isFeatured: true,
+  },
+  {
+    title: 'Rooftop Project',
+    thumbnail: rooftopThumbnail,
+    tags: ['AI', '3D Graphics', 'Dev & Design'],
+    path: 'rooftop',
+    isFeatured: false,
+  },
+  {
+    title: 'Side Indexer(개발중)',
+    thumbnail: sideIndexerThumbnail,
+    tags: ['Web Extension', 'AI'],
+    path: 'https://sideindexer.com/',
+    isFeatured: false,
+  },
+  {
+    title: 'Hi-K(개발중)',
     thumbnail: hiKThumbnail,
     tags: ['Web', 'Dev & Design'],
     path: 'https://www.hik.co.kr/',
@@ -118,13 +126,6 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: dolphinAIThumbnail,
     tags: ['Web', 'AI'],
     path: 'https://www.dolphin-in-cali-ai.com/',
-    isFeatured: false,
-  },
-  {
-    title: 'Side Indexer',
-    thumbnail: sideIndexerThumbnail,
-    tags: ['Web Extension', 'AI'],
-    path: 'https://sideindexer.com/',
     isFeatured: false,
   }
 ];

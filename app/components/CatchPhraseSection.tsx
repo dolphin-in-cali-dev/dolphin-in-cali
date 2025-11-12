@@ -183,6 +183,7 @@ const CatchPhraseSection = () => {
                 width={800}
                 height={200}
                 className="w-full h-auto"
+                quality={100}
                 style={isMounted ? {
                   willChange: 'opacity, filter, transform',
                 } : undefined}

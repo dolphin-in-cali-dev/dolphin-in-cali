@@ -54,6 +54,7 @@ const TitleAnimation = () => {
             fill
             className="object-contain object-left-bottom"
             priority
+            quality={100}
           />
         </div>
       </div>

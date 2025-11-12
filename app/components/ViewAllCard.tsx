@@ -31,6 +31,7 @@ const ViewAllCard = () => {
               width={80}
               height={80}
               className="h-12 w-12 brightness-0 invert sm:h-16 sm:w-16 lg:h-20 lg:w-20"
+              quality={100}
             />
             <span className="font-plus-jakarta-sans text-2xl font-medium text-white sm:text-3xl lg:text-3xl">
               View All Projects

@@ -45,6 +45,7 @@ const GlobalTabs = () => {
             width={28}
             height={28}
             className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 lg: pb-1.5"
+            quality={100}
           />
           <h1 className={cn(
             "whitespace-nowrap text-sm font-black sm:text-base lg:text-2xl",
@@ -79,7 +80,7 @@ const GlobalTabs = () => {
           </nav>
 
           {/* Mobile/Tablet Hamburger Menu - 표시: lg 미만, 숨김: lg 이상 */}
-          <div className="lg:hidden">
+          <div className="relative lg:hidden">
             {/* Hamburger Button */}
             <button
               onClick={handleMenuToggle}
@@ -98,7 +99,7 @@ const GlobalTabs = () => {
             {isMenuOpen && (
               <div
                 className={cn(
-                  'absolute left-0 right-0 top-[52px] z-50 border-t shadow-lg animate-in fade-in slide-in-from-top-2 duration-200',
+                  'fixed left-0 right-0 top-[52px] z-[100] border-t shadow-lg animate-in fade-in slide-in-from-top-2 duration-200',
                   isRooftop
                     ? 'border-neutral-700 bg-black'
                     : 'border-neutral-200 bg-white',

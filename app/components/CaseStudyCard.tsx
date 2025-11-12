@@ -32,6 +32,7 @@ const CaseStudyCard = ({ content }: CaseStudyCardProps) => {
             className="aspect-video w-full rounded-2xl sm:rounded-3xl"
             width={400}
             height={400}
+            quality={100}
           />
           
           {/* Image overlay gradient */}

@@ -21,6 +21,7 @@ const MainDomainCard = ({ content }: MainDomainCardProps) => {
             className="h-48 w-full rounded-lg sm:h-52 sm:rounded-xl lg:h-60"
             width={200}
             height={200}
+            quality={100}
           />
         )}
       </div>

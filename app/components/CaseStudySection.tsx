@@ -61,7 +61,7 @@ const CaseStudySection = () => {
               : 'relative z-40 bg-background'
             }`}
           style={isFixed ? { 
-            maxWidth: '1440px', 
+            width: '100%',
             margin: '0 auto', 
             paddingLeft: windowWidth >= 640 ? '2.5rem' : '1.5rem', 
             paddingRight: windowWidth >= 640 ? '2.5rem' : '1.5rem' 

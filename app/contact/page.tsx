@@ -271,6 +271,7 @@ const ContactPage = () => {
               width={50}
               height={50}
               className="h-10 w-10 sm:h-10 sm:w-10 lg:h-16 lg:w-16"
+              quality={100}
             />
             <h1 className="text-4xl font-bold text-slate-900 sm:text-5xl lg:text-7xl">
               Contact Us
@@ -601,6 +602,7 @@ const ContactPage = () => {
                       width={24}
                       height={24}
                       className="h-7 w-7"
+                      quality={100}
                     />
                   </div>
                   <div>
