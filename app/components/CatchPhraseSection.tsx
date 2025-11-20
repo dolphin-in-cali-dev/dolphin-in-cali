@@ -160,8 +160,8 @@ const CatchPhraseSection = () => {
 
   return (
     <div className="relative overflow-x-hidden">
-      <div className="absolute -left-20 top-16 h-40 w-9/12 rounded-[1500px/400px] bg-[#2658ff] blur-3xl opacity-60 sm:top-24 sm:h-48 lg:top-32 lg:h-640 lg:rounded-[2000px/500px] z-0" />
-      <div className="absolute right-0 top-28 h-16 w-4/12 rounded-[800px/200px] bg-[#2658ff] blur-3xl opacity-60 sm:top-36 sm:h-20 lg:top-48 lg:h-12 lg:rounded-[1000px/300px] z-0" />
+      <div className="hidden lg:block absolute -left-20 top-16 h-40 w-9/12 rounded-[1500px/400px] bg-[#2658ff] blur-3xl opacity-60 lg:top-32 lg:h-640 lg:rounded-[2000px/500px] z-0" />
+      <div className="hidden lg:block absolute right-0 top-28 h-16 w-4/12 rounded-[800px/200px] bg-[#2658ff] blur-3xl opacity-60 lg:top-48 lg:h-12 lg:rounded-[1000px/300px] z-0" />
 
       <div className="relative z-10 flex flex-col gap-y-16 pb-16 pt-20 sm:gap-y-20 sm:pb-24 sm:pt-28 lg:gap-y-28 lg:pb-32 lg:pt-40">
         <div ref={sectionRef} className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-y-8 px-6 sm:px-10 lg:flex-row lg:justify-center lg:gap-x-0">

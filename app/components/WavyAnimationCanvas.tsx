@@ -133,7 +133,7 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
         // 모바일: 화면 중앙, 작은 텍스트와 원
         originalX = canvas.width / 2;
         originalY = canvas.height / 2;
-        setTextSize('text-4xl');
+        setTextSize('text-2xl');
         massRef.current = BLACKHOLE_MASS * 0.7;
       } else if (isTablet) {
         // 태블릿: 우측 상단, 중간 텍스트와 원
@@ -141,7 +141,7 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
         const paddingY = Math.min(canvas.height * 0.12, 120);
         originalX = canvas.width - paddingX;
         originalY = paddingY;
-        setTextSize('text-4xl');
+        setTextSize('text-3xl');
         massRef.current = BLACKHOLE_MASS * 0.85;
       } else {
         // 데스크톱: 우측 상단, 큰 텍스트와 원
