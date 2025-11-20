@@ -5,7 +5,8 @@ import sincereFlowerThumbnail from '@assets/images/sincere-flower-thumbnail.png'
 import isaThumbnail from '@assets/images/isa-thumbnail.png';
 import cutpleThumbnail from '@assets/images/cutple-thumbnail.png';    
 import jndThumbnail from '@assets/images/jnd-thumbnail.png';
-import noaThumbnail from '@assets/images/noa-thumbnail.png';
+import fxThumbnail from '@assets/images/fxfriends-thumbnail.png';
+import coliThumbnail from '@assets/images/coli-thumbnail.png';
 import rooftopThumbnail from '@assets/images/rooftop-thumbnail.png';
 import hiKThumbnail from '@assets/images/hiK-thumbnail.png';
 import dolphinAIThumbnail from '@assets/images/dolphin-ai-thumbnail.png';
@@ -36,6 +37,13 @@ export const caseStudyItems: CaseStudyInfo[] = [
   //   path: 'case-study/eden-world',
   //   isFeatured: false,
   // },
+  {
+    title: 'Side Indexer',
+    thumbnail: sideIndexerThumbnail,
+    tags: ['Web Extension', 'AI'],
+    path: 'https://sideindexer.com/',
+    isFeatured: true,
+  },
   {
     title: '로봇다이브',
     thumbnail: robotDiveThumbnail,
@@ -85,7 +93,20 @@ export const caseStudyItems: CaseStudyInfo[] = [
   //   path: 'https://noahint.imweb.me/',
   //   isFeatured: false,
   // },
-
+  {
+    title: '애프엑스프렌즈',
+    thumbnail: fxThumbnail,
+    tags: ['Web', 'Dev & Design'],
+    path: 'https://fxfriends.vercel.app/',
+    isFeatured: false,
+  },
+  {
+    title: 'Coli',
+    thumbnail: coliThumbnail,
+    tags: ['Web', 'Dev & Design'],
+    path: 'https://www.coli.co.kr/',
+    isFeatured: false,
+  },
   {
     title: '제이엔디써키트',
     thumbnail: jndThumbnail,
@@ -105,20 +126,13 @@ export const caseStudyItems: CaseStudyInfo[] = [
     thumbnail: pickForThumbnail,
     tags: ['App', 'Dev & Design'],
     path: 'case-study/pickfor',
-    isFeatured: true,
+    isFeatured: false,
   },
   {
     title: 'Rooftop Project',
     thumbnail: rooftopThumbnail,
     tags: ['AI', '3D Graphics', 'Dev & Design'],
     path: 'rooftop',
-    isFeatured: false,
-  },
-  {
-    title: 'Side Indexer(개발중)',
-    thumbnail: sideIndexerThumbnail,
-    tags: ['Web Extension', 'AI'],
-    path: 'https://sideindexer.com/',
     isFeatured: false,
   },
   {

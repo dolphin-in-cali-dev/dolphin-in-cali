@@ -19,7 +19,7 @@ const CaseStudyList = () => {
 
   return (
     <div ref={containerRef} className="relative w-full">
-      <div ref={ref} className="relative grid grid-cols-1 pt-0 gap-6 sm:pt-4 sm:grid-cols-2 sm:gap-10 lg:pt-8 lg:grid-cols-3 lg:gap-4">
+      <div ref={ref} className="relative grid grid-cols-1 pt-0 gap-x-6 gap-y-8 sm:pt-4 sm:grid-cols-2 sm:gap-x-10 sm:gap-y-12 lg:pt-8 lg:grid-cols-3 lg:gap-x-4 lg:gap-y-6">
         {featuredItems.map((item, index) => (
           <motion.div
             key={item.title}

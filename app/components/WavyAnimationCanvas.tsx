@@ -17,6 +17,8 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
   const mouseRef = useRef({ x: 0, y: 0 });
   const targetMouseRef = useRef({ x: 0, y: 0 });
   const [textPosition, setTextPosition] = useState({ x: 0, y: 0 });
+  const [textSize, setTextSize] = useState('text-3xl');
+  const massRef = useRef(BLACKHOLE_MASS);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -123,18 +125,32 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
 
       // 화면 크기에 따른 반응형 위치 계산 (모바일 대응)
       const isMobile = canvas.width < 640;
+      const isTablet = canvas.width >= 640 && canvas.width < 1024;
       let originalX, originalY;
       
+      // 화면 크기에 따라 텍스트 크기와 원 크기 조정
       if (isMobile) {
-        // 모바일: 화면 중앙
+        // 모바일: 화면 중앙, 작은 텍스트와 원
         originalX = canvas.width / 2;
         originalY = canvas.height / 2;
-      } else {
-        // 데스크톱: 우측 상단
+        setTextSize('text-4xl');
+        massRef.current = BLACKHOLE_MASS * 0.7;
+      } else if (isTablet) {
+        // 태블릿: 우측 상단, 중간 텍스트와 원
         const paddingX = Math.min(canvas.width * 0.08, 120);
         const paddingY = Math.min(canvas.height * 0.12, 120);
         originalX = canvas.width - paddingX;
         originalY = paddingY;
+        setTextSize('text-4xl');
+        massRef.current = BLACKHOLE_MASS * 0.85;
+      } else {
+        // 데스크톱: 우측 상단, 큰 텍스트와 원
+        const paddingX = Math.min(canvas.width * 0.08, 120);
+        const paddingY = Math.min(canvas.height * 0.12, 120);
+        originalX = canvas.width - paddingX;
+        originalY = paddingY;
+        setTextSize('text-4xl');
+        massRef.current = BLACKHOLE_MASS;
       }
       
       mouseRef.current = { x: originalX, y: originalY };
@@ -165,7 +181,7 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
         mouseRef.current.x,
         mouseRef.current.y,
       );
-      gl.uniform1f(massUniformLocation, BLACKHOLE_MASS * 0.00001);
+      gl.uniform1f(massUniformLocation, massRef.current * 0.00001);
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
       requestAnimationFrame(render);
     };
@@ -196,7 +212,7 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
         originalX = canvas.width / 2;
         originalY = canvas.height / 2;
       } else {
-        // 데스크톱: 우측 상단
+        // 데스크톱/태블릿: 우측 상단
         const paddingX = Math.min(canvas.width * 0.08, 120);
         const paddingY = Math.min(canvas.height * 0.12, 120);
         originalX = canvas.width - paddingX;
@@ -227,7 +243,7 @@ const WavyAnimationCanvas = ({ className }: ShaderTestProps) => {
           transform: 'translate(-50%, -50%)',
         }}
       >
-        <span className="font-clash text-5xl font-black text-white sm:text-4xl lg:text-3xl">
+        <span className={cn('font-clash font-black text-white', textSize)}>
           CONTACT
         </span>
       </div>
